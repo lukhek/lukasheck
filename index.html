@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lukas Manfred Heck — Longevity. Performance. Wellbeing.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#fff;--ink:#050505;--muted:rgba(5,5,5,.58);--line:rgba(5,5,5,.1);--soft:rgba(5,5,5,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Raleway',sans-serif;background:#fff;color:#050505;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.page{min-height:100vh;display:flex;flex-direction:column}
+nav{border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1180px;margin:auto;padding:30px 32px}
+.brand{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+main{flex:1;display:flex;align-items:center;padding:96px 32px}
+.hero{max-width:1180px;margin:auto;width:100%;display:grid;grid-template-columns:1fr 500px;gap:96px;align-items:center}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+h1{font-size:clamp(3.4rem,8vw,7.4rem);line-height:.94;letter-spacing:-.055em}
+.lead{margin-top:36px;max-width:560px;color:var(--muted);line-height:1.75}
+.status{margin-top:42px;padding-top:28px;border-top:1px solid var(--soft);max-width:520px;font-size:14px;font-weight:600;line-height:1.7}
+.status span{display:block;margin-top:10px;font-weight:400;color:var(--muted)}
+.waitlist-card{padding:64px;background:#050505;color:#fff;transition:.25s}
+.waitlist-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,.12)}
+.card-label{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-bottom:28px}
+.card-title{font-size:27px;line-height:1.18;margin-bottom:24px}
+.card-copy{font-size:14px;line-height:1.7;color:rgba(255,255,255,.62);margin-bottom:34px}
+label{font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+input{width:100%;padding:16px 0;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.62);color:#fff;margin-top:8px}
+button{width:100%;margin-top:24px;padding:18px;border:1px solid #fff;background:#fff;color:#050505;font-weight:700;letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
+button:hover{background:transparent;color:#fff}
+.privacy{margin-top:18px;font-size:10px;color:rgba(255,255,255,.42)}
+footer{border-top:1px solid var(--line);padding:28px 32px}
+.footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:flex-end;gap:22px}
+@media(max-width:960px){.hero{grid-template-columns:1fr}.waitlist-card{max-width:520px}}
+</style>
+</head>
+<body>
+<div class="page">
+<nav><div class="nav-inner"><a href="/" class="brand">Lukas Manfred Heck</a></div></nav>
+<main>
+<section class="hero">
+<div>
+<div class="eyebrow">Private Health Advisory</div>
+<h1>Longevity. Performance. Wellbeing.</h1>
+<p class="lead">Private 1:1 Beratung für Menschen, die ihre Leistungsfähigkeit und langfristige Lebensqualität gezielt optimieren möchten.</p>
+<div class="status">
+Die persönliche Zusammenarbeit ist aktuell vollständig ausgelastet.
+<span>Sobald wieder Kapazitäten verfügbar werden, erhalten Wartelisten-Mitglieder zuerst Zugang zu einem persönlichen 1:1-Gespräch.</span>
+</div>
+</div>
+<aside class="waitlist-card">
+<div class="card-label">Warteliste</div>
+<h2 class="card-title">Sichere dir dein Beratungsgespräch mit Lukas Heck.</h2>
+<p class="card-copy">Trag dich ein, wenn du informiert werden möchtest, sobald wieder Plätze für eine persönliche Zusammenarbeit verfügbar sind.</p>
+<form>
+<label>E-Mail-Adresse</label>
+<input type="email" placeholder="mustermann@beispiel.com">
+<button type="submit">Eintragen</button>
+<p class="privacy">Mit dem Eintragen erklärst du dich einverstanden, per E-Mail kontaktiert zu werden. Mehr dazu in der Datenschutzerklärung.</p>
+</form>
+</aside>
+</section>
+</main>
+<footer><div class="footer-inner"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div></footer>
+</div>
+</body>
+</html>
