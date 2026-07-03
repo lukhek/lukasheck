@@ -4,33 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Lukas Manfred Heck — Longevity. Performance. Wellbeing.</title>
-  <meta name="description" content="Private 1:1 Beratung für Longevity, Performance und Wellbeing. Die persönliche Zusammenarbeit mit Lukas Manfred Heck ist aktuell vollständig ausgelastet. Zugang über Warteliste." />
-  <meta name="robots" content="noindex, follow" />
+  <title>Lukas Manfred Heck — Health · Performance · Longevity</title>
+  <meta name="description" content="Der HECK Insider ist ein kostenloser WhatsApp-Kanal mit evidenzbasierten Strategien für Performance und Longevity von Lukas Manfred Heck. Nur eine Nachricht pro Monat, kein Gruppenchat, jederzeit abmeldbar." />
+  <meta name="robots" content="index, follow" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet" />
 
   <style>
     :root {
       --bg: #ffffff;
-      --ink: #050505;
-      --muted: rgba(5,5,5,0.58);
-      --soft: rgba(5,5,5,0.12);
-      --line: rgba(5,5,5,0.10);
+      --paper: #f6f5f2;
+      --ink: #070707;
+      --muted: rgba(7,7,7,0.60);
+      --muted-2: rgba(7,7,7,0.42);
+      --soft: rgba(7,7,7,0.10);
+      --line: rgba(7,7,7,0.12);
+      --signal: #25a35a;
+      --signal-dim: rgba(37,163,90,0.10);
       --font: 'Raleway', sans-serif;
+      --serif: 'Fraunces', serif;
       --tr: 0.25s ease;
+      --tr-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-    html {
-      scroll-behavior: smooth;
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
 
     body {
@@ -40,468 +44,485 @@
       color: var(--ink);
       -webkit-font-smoothing: antialiased;
       text-rendering: geometricPrecision;
+      overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+    ul { list-style: none; }
+    h1, h2, .lead, .section-lead, .value-list li, .bonus-title, .bonus-desc { overflow-wrap: break-word; word-break: normal; }
 
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
+    .wrap { max-width: 1140px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+    .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+    /* ---------- NAV ---------- */
     nav {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
     }
-
     .nav-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 30px 32px;
-      display: flex;
-      align-items: center;
+      max-width: 1140px; margin: 0 auto; padding: 20px 32px;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
     }
+    .brand-block { display: flex; flex-direction: column; gap: 3px; }
+    .brand { font-size: 12.5px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; }
+    .brand-sub { font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-2); white-space: nowrap; }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 10px 18px 10px 10px;
+      border: 1px solid var(--ink); background: var(--ink); color: #fff;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      border-radius: 999px;
+      transition: background var(--tr), color var(--tr), transform var(--tr);
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: transparent; color: var(--ink); transform: translateY(-1px); }
+    .nav-cta svg { width: 20px; height: 20px; flex-shrink: 0; }
 
-    .brand {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    main {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      padding: 96px 32px;
-    }
-
-    .hero {
-      width: 100%;
-      max-width: 1180px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 500px;
-      gap: 96px;
-      align-items: center;
-    }
+    /* ---------- HERO ---------- */
+    .hero { padding: 80px 0 100px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 380px; gap: 88px; align-items: center; }
 
     .eyebrow {
-      margin-bottom: 28px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--muted);
+      display: inline-flex; align-items: center; gap: 9px;
+      margin-top: 30px; margin-bottom: 20px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted-2);
     }
+    .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 0 4px var(--signal-dim); flex-shrink: 0; }
 
     h1 {
-      max-width: 760px;
-      font-size: clamp(3.4rem, 8vw, 7.4rem);
-      font-weight: 800;
-      line-height: 0.94;
-      letter-spacing: -0.055em;
+      font-size: clamp(2.05rem, 3.4vw, 3.05rem);
+      font-weight: 800; line-height: 1.14; letter-spacing: -0.025em;
+      max-width: 600px;
     }
+    .lead { max-width: 520px; margin-top: 22px; font-size: 1.02rem; line-height: 1.68; color: var(--muted); }
 
-    .lead {
-      max-width: 560px;
-      margin-top: 36px;
-      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
-      line-height: 1.75;
-      color: var(--muted);
-    }
+    .value-list { margin-top: 22px; display: flex; flex-direction: column; gap: 10px; }
+    .value-list li { position: relative; padding-left: 20px; font-size: 14.5px; line-height: 1.5; color: var(--ink); font-weight: 500; }
+    .value-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--signal); }
 
-    .status {
-      margin-top: 42px;
-      max-width: 520px;
-      padding-top: 28px;
-      border-top: 1px solid var(--soft);
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 1.7;
-    }
+    .hero-cta { margin-top: 36px; display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
 
-    .status span {
-      display: block;
-      margin-top: 10px;
-      font-weight: 400;
-      color: var(--muted);
-    }
-
-    .waitlist-card {
-      position: relative;
-      padding: 64px;
-      background: #050505;
-      color: #fff;
-      border: 1px solid rgba(5,5,5,1);
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 18px 28px 18px 18px;
+      border: 1px solid var(--ink); background: var(--ink); color: #fff;
+      font-family: var(--font); font-size: 13px; font-weight: 700; letter-spacing: 0.03em;
+      border-radius: 999px; cursor: pointer;
       transition: transform var(--tr), box-shadow var(--tr), background var(--tr);
     }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(7,7,7,0.22); }
+    .btn-primary svg { width: 26px; height: 26px; flex-shrink: 0; }
 
-    .waitlist-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.12);
-      background: #080808;
+    .trust-row { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+    .trust-item { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; color: var(--muted); }
+    .trust-item svg { width: 13px; height: 13px; flex-shrink: 0; color: var(--signal); }
+
+    /* ---------- PHONE MOCKUP ---------- */
+    .phone-wrap { display: flex; justify-content: center; }
+    .phone {
+      position: relative;
+      width: 100%; max-width: 272px;
+      background: #0a0a0a;
+      border-radius: 44px;
+      padding: 13px 9px;
+      box-shadow: 0 30px 70px rgba(7,7,7,0.18);
     }
-
-    .card-label {
-      margin-bottom: 28px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.78);
-    }
-
-    .card-title {
-      margin-bottom: 24px;
-      font-size: 27px;
-      font-weight: 700;
-      line-height: 1.18;
-      letter-spacing: -0.03em;
-      color: #fff;
-    }
-
-    .card-copy {
-      margin-bottom: 34px;
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.62);
-    }
-
-    form {
+    .phone-screen {
+      position: relative;
+      background: #ffffff;
+      border-radius: 33px;
+      overflow: hidden;
+      aspect-ratio: 9 / 19.3;
       display: flex;
       flex-direction: column;
-      gap: 14px;
     }
-
-    label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.86);
+    .notch {
+      position: absolute; top: 9px; left: 50%; transform: translateX(-50%);
+      width: 78px; height: 20px; background: #0a0a0a; border-radius: 12px; z-index: 6;
     }
-
-    input[type="email"] {
-      width: 100%;
-      padding: 16px 0;
-      border: none;
-      border-bottom: 1px solid rgba(255,255,255,0.62);
-      background: transparent;
-      font-family: var(--font);
-      font-size: 16px;
-      color: #fff;
-      outline: none;
+    .status-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 15px 20px 0; font-size: 11px; font-weight: 700; color: #0a0a0a; flex-shrink: 0;
     }
+    .status-bar .icons { display: flex; align-items: center; gap: 4px; }
+    .status-bar .icons svg { width: 15px; height: 11px; }
 
-    input[type="email"]::placeholder {
-      color: rgba(255,255,255,0.38);
+    .wa-header {
+      display: flex; align-items: center; gap: 9px;
+      padding: 10px 12px 12px;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      flex-shrink: 0;
     }
-
-    input[type="email"]:focus {
-      border-bottom-color: #fff;
+    .wa-back { font-size: 19px; color: #0a0a0a; line-height: 1; font-weight: 400; }
+    .wa-avatar {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: linear-gradient(135deg, #1a1a1a, #3a3a3a);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-style: italic; font-size: 12px; color: #fff; flex-shrink: 0;
     }
+    .wa-name { font-size: 12.5px; font-weight: 700; color: #0a0a0a; }
+    .wa-sub { font-size: 9.5px; color: rgba(0,0,0,0.42); margin-top: 1px; }
 
-    .hp {
-      position: absolute;
-      left: -9999px;
-      opacity: 0;
-      height: 0;
-      width: 0;
+    .chat-area {
+      flex: 1;
+      padding: 13px 9px 16px;
+      display: flex; flex-direction: column; gap: 8px;
+      background: #eceee6;
+      background-image: radial-gradient(circle at 20% 10%, rgba(0,0,0,0.03) 1px, transparent 1px);
+      background-size: 22px 22px;
       overflow: hidden;
     }
+    .chat-date { align-self: center; font-size: 8.5px; font-weight: 700; color: rgba(0,0,0,0.32); background: rgba(0,0,0,0.05); padding: 3px 9px; border-radius: 8px; margin-bottom: 2px; }
 
-    button {
-      margin-top: 18px;
-      width: 100%;
-      padding: 18px 24px;
-      border: 1px solid #fff;
-      background: #fff;
-      color: #050505;
-      font-family: var(--font);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background var(--tr), color var(--tr);
+    .bubble {
+      max-width: 88%;
+      padding: 9px 11px;
+      background: #ffffff;
+      border-radius: 3px 11px 11px 11px;
+      font-size: 11.3px;
+      line-height: 1.48;
+      color: #161616;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.06);
     }
+    .bubble .time { display: block; margin-top: 4px; font-size: 8.5px; color: rgba(0,0,0,0.34); text-align: right; }
 
-    button:hover {
-      background: transparent;
-      color: #fff;
+    .file-bubble { padding: 10px; }
+    .file-caption { font-size: 10.8px; margin-bottom: 8px; font-weight: 600; }
+    .file-row { display: flex; align-items: center; gap: 9px; background: #f4f5f1; border-radius: 8px; padding: 8px 9px; }
+    .file-row + .file-row { margin-top: 7px; }
+    .file-icon {
+      width: 30px; height: 30px; border-radius: 7px; background: var(--ink);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
+    .file-icon svg { width: 15px; height: 15px; color: #fff; }
+    .file-name { font-size: 10.8px; font-weight: 700; color: #161616; line-height: 1.3; }
+    .file-meta { font-size: 9px; color: rgba(0,0,0,0.42); margin-top: 1px; }
+    .file-dl { width: 20px; height: 20px; border-radius: 50%; background: var(--signal-dim); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-left: auto; }
+    .file-dl svg { width: 10px; height: 10px; color: var(--signal); }
 
-    .privacy {
-      margin-top: 18px;
-      font-size: 10.5px;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.42);
+    .poll-q { font-size: 11.3px; font-weight: 700; margin-bottom: 8px; }
+    .poll-opt { display: flex; align-items: center; gap: 8px; padding: 6px 2px; font-size: 10.8px; color: #161616; border-top: 1px solid rgba(0,0,0,0.055); }
+    .poll-opt:first-of-type { border-top: none; }
+    .poll-radio { width: 13px; height: 13px; border-radius: 50%; border: 1.5px solid rgba(0,0,0,0.22); flex-shrink: 0; }
+
+    /* ---------- SECTION SHELL ---------- */
+    section { padding: 88px 0; }
+    section.on-paper { background: var(--paper); }
+    section + section { border-top: 1px solid var(--line); }
+
+    .section-head { max-width: 600px; margin-bottom: 44px; }
+    .kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
+    h2 { font-size: clamp(1.6rem, 2.5vw, 2.15rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.16; }
+    .section-lead { margin-top: 14px; font-size: 1rem; line-height: 1.7; color: var(--muted); }
+
+    /* ---------- BONI ---------- */
+    .boni-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .bonus-card {
+      border: 1px solid var(--line); border-radius: 18px; padding: 30px 26px; background: var(--bg);
+      display: flex; flex-direction: column; gap: 16px;
+      transition: transform var(--tr), box-shadow var(--tr);
     }
-
-    .privacy a {
-      text-decoration: underline;
-      text-underline-offset: 3px;
+    .bonus-card:hover { transform: translateY(-5px); box-shadow: 0 20px 46px rgba(7,7,7,0.09); }
+    .bonus-badge {
+      display: inline-flex; width: fit-content; align-items: center; gap: 6px;
+      padding: 6px 12px; border-radius: 999px; background: var(--signal-dim); color: var(--signal);
+      font-size: 10.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
     }
+    .bonus-icon { width: 40px; height: 40px; border-radius: 12px; background: var(--ink); display: flex; align-items: center; justify-content: center; }
+    .bonus-icon svg { width: 19px; height: 19px; color: #fff; }
+    .bonus-title { font-size: 16.5px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.3; }
+    .bonus-desc { font-size: 13px; line-height: 1.6; color: var(--muted); }
 
-    #success {
-      display: none;
-      font-size: 14px;
-      line-height: 1.7;
+    /* ---------- FINAL CTA ---------- */
+    .final-cta { background: var(--ink); color: #fff; text-align: center; padding: 100px 0; }
+    .final-cta .kicker { color: rgba(255,255,255,0.5); }
+    .final-cta h2 { color: #fff; max-width: 680px; margin: 0 auto; }
+    .final-cta .section-lead { color: rgba(255,255,255,0.58); max-width: 480px; margin-left: auto; margin-right: auto; }
+    .final-cta .hero-cta { align-items: center; margin-top: 40px; }
+    .final-cta .btn-primary { background: #fff; color: var(--ink); border-color: #fff; }
+    .final-cta .btn-primary:hover { background: transparent; color: #fff; }
+    .final-cta .trust-row { justify-content: center; }
+    .final-cta .trust-item { color: rgba(255,255,255,0.6); }
+    .final-cta .trust-item svg { color: var(--signal); }
+    .coaching-note {
+      margin-top: 26px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      max-width: 460px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 1.65;
       color: rgba(255,255,255,0.66);
     }
 
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 28px 32px;
-    }
+    /* ---------- FOOTER ---------- */
+    footer { padding: 28px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer-brand { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-2); }
+    .footer-links { display: flex; gap: 22px; }
+    .footer-links a { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); transition: color var(--tr); }
+    .footer-links a:hover { color: var(--ink); }
 
-    .footer-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: flex-end;
-      gap: 22px;
-    }
+    /* ---------- REVEAL ---------- */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity var(--tr-slow), transform var(--tr-slow); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-    footer a {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      transition: color var(--tr);
-    }
-
-    footer a:hover {
-      color: var(--ink);
-    }
-
-    @media (max-width: 960px) {
-      main {
-        align-items: flex-start;
-        padding: 72px 24px;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        gap: 56px;
-      }
-
-      .waitlist-card {
-        max-width: 560px;
-        width: 100%;
-      }
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 52px; }
+      .phone-wrap { order: -1; }
+      .phone { max-width: 240px; }
+      .boni-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 640px) {
-      .nav-inner {
-        padding: 22px 20px;
-      }
-
-      .brand {
-        font-size: 11px;
-        letter-spacing: 0.14em;
-      }
-
-      main {
-        padding: 54px 20px 64px;
-      }
-
-      .hero {
-        gap: 42px;
-      }
-
-      .eyebrow {
-        margin-bottom: 22px;
-        font-size: 10px;
-        letter-spacing: 0.22em;
-      }
-
-      h1 {
-        max-width: 100%;
-        font-size: clamp(3rem, 15.4vw, 5.2rem);
-        line-height: 0.96;
-        letter-spacing: -0.065em;
-      }
-
-      .lead {
-        margin-top: 28px;
-        font-size: 16px;
-        line-height: 1.75;
-      }
-
-      .status {
-        margin-top: 32px;
-        padding-top: 24px;
-        font-size: 13px;
-        line-height: 1.75;
-      }
-
-      .waitlist-card {
-        padding: 34px 24px;
-      }
-
-      .card-label {
-        margin-bottom: 22px;
-        font-size: 10px;
-        letter-spacing: 0.20em;
-      }
-
-      .card-title {
-        margin-bottom: 20px;
-        font-size: 23px;
-        line-height: 1.2;
-      }
-
-      .card-copy {
-        margin-bottom: 30px;
-        font-size: 13px;
-        line-height: 1.75;
-      }
-
-      input[type="email"] {
-        font-size: 15px;
-      }
-
-      button {
-        padding: 17px 22px;
-      }
-
-      .privacy {
-        font-size: 10px;
-      }
-
-      footer {
-        padding: 24px 20px;
-      }
-
-      .footer-inner {
-        justify-content: flex-start;
-        gap: 18px;
-      }
-    }
-
-    @media (max-width: 390px) {
-      main {
-        padding: 44px 18px 56px;
-      }
-
-      h1 {
-        font-size: clamp(2.72rem, 14.5vw, 4rem);
-      }
-
-      .lead {
-        font-size: 15px;
-      }
-
-      .waitlist-card {
-        padding: 30px 22px;
-      }
-
-      .card-title {
-        font-size: 21px;
-      }
-
-      .brand {
-        font-size: 10px;
-        letter-spacing: 0.12em;
-      }
+      .wrap { padding-left: 22px; padding-right: 22px; }
+      .nav-inner { padding: 16px 22px; }
+      .brand-sub { white-space: normal; max-width: 150px; line-height: 1.4; }
+      .nav-cta { padding: 11px; }
+      .nav-cta-text { display: none; }
+      .hero { padding: 46px 0 56px; }
+      .eyebrow { margin-top: 24px; }
+      .lead { margin-top: 18px; font-size: 15px; }
+      .hero-cta { margin-top: 28px; }
+      .btn-primary { width: 100%; justify-content: center; }
+      h1 { font-size: 1.85rem; }
+      section { padding: 60px 0; }
+      .section-head { margin-bottom: 32px; }
+      .final-cta { padding: 68px 0; }
+      .footer-inner { justify-content: flex-start; }
     }
   </style>
 </head>
 
 <body>
-  <div class="page">
 
-    <nav>
-      <div class="nav-inner">
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="wa-icon" viewBox="0 0 32 32">
+      <circle cx="16" cy="16" r="16" fill="#25D366"/>
+      <path d="M16 7c-5 0-9 4-9 9 0 1.6.4 3.1 1.2 4.4L7 25l4.8-1.2c1.3.7 2.7 1.1 4.2 1.1 5 0 9-4 9-9s-4-9-9-9zm0 16.4c-1.3 0-2.6-.3-3.7-1l-.3-.2-2.9.7.7-2.8-.2-.3c-.8-1.2-1.2-2.6-1.2-4 0-4.1 3.4-7.5 7.6-7.5s7.6 3.4 7.6 7.5-3.4 7.6-7.6 7.6z" fill="#fff"/>
+      <path d="M13.1 11.5c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 3 4.7 4.1 2.3.9 2.8.7 3.3.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3-.3-.2-1.5-.8-1.8-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.6-1.4-1.9-.1-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.6-1.5-.8-2z" fill="#fff"/>
+    </symbol>
+  </svg>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="brand-block">
         <a href="/" class="brand">Lukas Manfred Heck</a>
+        <div class="brand-sub">Health · Performance · Longevity</div>
       </div>
-    </nav>
+      <a class="nav-cta" href="https://wa.me/4916090255862?text=START%20HECK%20INSIDER" target="_blank" rel="noopener">
+        <svg><use href="#wa-icon"/></svg>
+        <span class="nav-cta-text">HECK Insider</span>
+      </a>
+    </div>
+  </nav>
 
-    <main>
-      <section class="hero">
+  <main>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="wrap hero-grid">
         <div>
-          <div class="eyebrow">Private Health Advisory</div>
+          <div class="eyebrow"><span class="dot"></span>HECK Insider · Kostenloser WhatsApp-Kanal</div>
 
-          <h1>Longevity. Performance. Wellbeing.</h1>
+          <h1>Evidenzbasierte Strategien für Performance und Longevity. Direkt per WhatsApp auf dein Smartphone.</h1>
 
           <p class="lead">
-            Private 1:1 Beratung für Menschen, die ihre Leistungsfähigkeit und langfristige Lebensqualität gezielt optimieren möchten.
+            Erhalte kostenlos hochwertige Inhalte von Lukas Manfred Heck — evidenzbasiert recherchiert, kritisch eingeordnet und praxisnah aufbereitet. Zum Beispiel:
           </p>
 
-          <div class="status">
-            Die persönliche Zusammenarbeit ist aktuell vollständig ausgelastet.
-            <span>
-              Sobald wieder Kapazitäten verfügbar werden, erhalten Wartelisten-Mitglieder zuerst Zugang zu einem persönlichen 1:1-Gespräch.
-            </span>
+          <ul class="value-list">
+            <li>Blutbild-Interpretationen</li>
+            <li>Verständlich erklärte Studien</li>
+            <li>Praktische Checklisten</li>
+            <li>Evidenzbasierte Supplement-Empfehlungen und Protokolle</li>
+          </ul>
+
+          <div class="hero-cta">
+            <a class="btn-primary" href="https://wa.me/4916090255862?text=START%20HECK%20INSIDER" target="_blank" rel="noopener">
+              <svg><use href="#wa-icon"/></svg>
+              Jetzt HECK Insider beitreten — kostenlos
+            </a>
+            <div class="trust-row">
+              <span class="trust-item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l4 4 8-8"/></svg>Kein Gruppenchat</span>
+              <span class="trust-item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l4 4 8-8"/></svg>1 Nachricht pro Monat</span>
+              <span class="trust-item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l4 4 8-8"/></svg>Kostenlos</span>
+              <span class="trust-item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l4 4 8-8"/></svg>Jederzeit mit einem Klick abmeldbar</span>
+            </div>
           </div>
         </div>
 
-        <aside class="waitlist-card" id="warteliste">
-          <div class="card-label">Warteliste</div>
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="notch"></div>
 
-          <h2 class="card-title">Sichere dir dein Beratungsgespräch mit Lukas Heck.</h2>
+              <div class="status-bar">
+                <span>9:41</span>
+                <span class="icons">
+                  <svg viewBox="0 0 16 11" fill="none"><path d="M1 9.5h1v1H1v-1zM3.5 7h1v3.5h-1V7zM6 4.5h1V10.5H6V4.5zM8.5 2h1V10.5h-1V2zM11 5.5h1V10.5H11V5.5z" fill="#0a0a0a"/></svg>
+                  <svg viewBox="0 0 20 11" fill="none"><rect x="0.5" y="0.5" width="17" height="10" rx="2.2" stroke="#0a0a0a"/><rect x="2" y="2" width="12" height="7" rx="1" fill="#0a0a0a"/><rect x="18.3" y="3.3" width="1.4" height="4.4" rx="0.7" fill="#0a0a0a"/></svg>
+                </span>
+              </div>
 
-          <p class="card-copy">
-            Trag dich ein, wenn du informiert werden möchtest, sobald wieder Plätze für eine persönliche Zusammenarbeit verfügbar sind.
-          </p>
+              <div class="wa-header">
+                <span class="wa-back">‹</span>
+                <div class="wa-avatar">H</div>
+                <div>
+                  <div class="wa-name">HECK Insider</div>
+                  <div class="wa-sub">Broadcast-Kanal</div>
+                </div>
+              </div>
 
-          <form id="waitlist-form" action="#" method="POST" novalidate>
-            <div>
-              <label for="email">E-Mail-Adresse</label>
-              <input id="email" name="email" type="email" placeholder="mustermann@beispiel.com" required />
+              <div class="chat-area">
+                <div class="chat-date">Heute</div>
+
+                <div class="bubble">
+                  Willkommen beim HECK Insider! 👋 Schön, dass du dabei bist.
+                  <span class="time">09:14</span>
+                </div>
+
+                <div class="bubble file-bubble">
+                  <div class="file-caption">🎁 Deine Boni:</div>
+                  <div class="file-row">
+                    <div class="file-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg>
+                    </div>
+                    <div>
+                      <div class="file-name">Blutbild-Checkliste.pdf</div>
+                      <div class="file-meta">PDF · 240 KB</div>
+                    </div>
+                    <div class="file-dl">
+                      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3v10m0 0l-4-4m4 4l4-4M4 16h12"/></svg>
+                    </div>
+                  </div>
+                  <div class="file-row">
+                    <div class="file-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg>
+                    </div>
+                    <div>
+                      <div class="file-name">Herbal-Testosteron-Stack.pdf</div>
+                      <div class="file-meta">PDF · 180 KB</div>
+                    </div>
+                    <div class="file-dl">
+                      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3v10m0 0l-4-4m4 4l4-4M4 16h12"/></svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bubble">
+                  <div class="poll-q">📊 Was interessiert dich aktuell am meisten?</div>
+                  <div class="poll-opt"><span class="poll-radio"></span>Blutbild</div>
+                  <div class="poll-opt"><span class="poll-radio"></span>Training</div>
+                  <div class="poll-opt"><span class="poll-radio"></span>Ernährung</div>
+                </div>
+              </div>
             </div>
-
-            <div class="hp" aria-hidden="true">
-              <label for="hp-field">Bitte freilassen</label>
-              <input id="hp-field" name="hp_field" type="text" tabindex="-1" autocomplete="off" />
-            </div>
-
-            <button type="submit">Eintragen</button>
-
-            <p class="privacy">
-              Mit dem Eintragen erklärst du dich einverstanden, per E-Mail kontaktiert zu werden. Mehr dazu in der
-              <a href="/datenschutz.html">Datenschutzerklärung</a>.
-            </p>
-          </form>
-
-          <div id="success">
-            Du bist eingetragen. Sobald wieder Kapazitäten verfügbar werden, erhältst du weitere Informationen per E-Mail.
           </div>
-        </aside>
-      </section>
-    </main>
+        </div>
+      </div>
+    </section>
 
-    <footer>
-      <div class="footer-inner">
+    <!-- ================= BONI ================= -->
+    <section class="on-paper">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="kicker">Dein Einstieg</div>
+          <h2>Drei Ressourcen. Direkt nach dem Beitritt.</h2>
+          <p class="section-lead">Praxisnahe, evidenzbasierte Inhalte, die du sofort nutzen kannst.</p>
+        </div>
+
+        <div class="boni-grid reveal">
+          <div class="bonus-card">
+            <div class="bonus-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c2 3 4 5.5 4 9a4 4 0 0 1-8 0c0-3.5 2-6 4-9z"/></svg>
+            </div>
+            <span class="bonus-badge">Bonus 01</span>
+            <div class="bonus-title">Herbal Testosteron Stack</div>
+            <div class="bonus-desc">Eine evidenzbasierte Übersicht ausgewählter pflanzlicher Wirkstoffe zur Unterstützung eines gesunden Hormonhaushalts.</div>
+          </div>
+
+          <div class="bonus-card">
+            <div class="bonus-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6l1 4H8l1-4z"/><path d="M6 7h12l-1 13a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 7z"/><path d="M9.5 12h5"/></svg>
+            </div>
+            <span class="bonus-badge">Bonus 02</span>
+            <div class="bonus-title">Blutbild-Checkliste</div>
+            <div class="bonus-desc">Die wichtigsten Marker für Gesundheit, Performance und Longevity – verständlich erklärt und praktisch eingeordnet.</div>
+          </div>
+
+          <div class="bonus-card">
+            <div class="bonus-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 8c-4 0-7 3-7 7.5 0 3 1.8 5 3.5 5s2-1 3.5-1 1.8 1 3.5 1c1.7 0 3.5-2 3.5-5C19 11 16 8 12 8z"/><path d="M12 8c0-2.5 1.5-4.5 3.5-5"/></svg>
+            </div>
+            <span class="bonus-badge">Bonus 03</span>
+            <div class="bonus-title">5 Superfoods für Energie &amp; Performance</div>
+            <div class="bonus-desc">Eine kompakte Übersicht wissenschaftlich fundierter Lebensmittel mit Potenzial für mehr Energie, Leistungsfähigkeit und langfristige Gesundheit.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FINAL CTA ================= -->
+    <section class="final-cta">
+      <div class="wrap">
+        <div class="kicker">HECK Insider</div>
+        <h2>Dein erster Mehrwert ist eine Nachricht entfernt.</h2>
+        <p class="section-lead">Kostenlos, unkompliziert, ohne Verpflichtung.</p>
+
+        <div class="hero-cta">
+          <a class="btn-primary" href="https://wa.me/4916090255862?text=START%20HECK%20INSIDER" target="_blank" rel="noopener">
+            <svg><use href="#wa-icon"/></svg>
+            Jetzt HECK Insider beitreten
+          </a>
+          <div class="trust-row">
+            <span class="trust-item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l4 4 8-8"/></svg>Kein Gruppenchat</span>
+            <span class="trust-item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l4 4 8-8"/></svg>1 Nachricht pro Monat</span>
+            <span class="trust-item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l4 4 8-8"/></svg>Kostenlos</span>
+            <span class="trust-item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l4 4 8-8"/></svg>Jederzeit mit einem Klick abmeldbar</span>
+          </div>
+
+          <p class="coaching-note">Du möchtest persönlich mit mir zusammenarbeiten? Aktuell sind alle Plätze belegt. Im HECK Insider erfährst du als Erstes, wenn wieder Kapazitäten frei werden, und kannst dir ein kostenloses Beratungsgespräch sichern.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="footer-brand">Lukas Manfred Heck</div>
+      <div class="footer-links">
         <a href="/impressum.html">Impressum</a>
         <a href="/datenschutz.html">Datenschutz</a>
       </div>
-    </footer>
-
-  </div>
+    </div>
+  </footer>
 
   <script>
-    const form = document.getElementById('waitlist-form');
-    const success = document.getElementById('success');
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const hp = document.getElementById('hp-field');
-      if (hp && hp.value) return;
-
-      const email = document.getElementById('email').value.trim();
-      if (!email) return;
-
-      form.style.display = 'none';
-      success.style.display = 'block';
-    });
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+      revealEls.forEach((el) => io.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('is-visible'));
+    }
   </script>
+
 </body>
 </html>
