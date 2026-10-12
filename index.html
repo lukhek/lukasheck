@@ -73,6 +73,22 @@ h2{font-size:clamp(1.9rem,4vw,3rem)}
 .links a:hover{color:var(--fg)}
 @media(min-width:900px){.links{display:flex}.brand small{display:inline}}
 
+
+/* Mobile refinements */
+.hero h1 em{white-space:nowrap}
+@media(max-width:899px){
+  html{scroll-padding-top:112px}
+  .nav .wrap{flex-wrap:wrap;row-gap:0;min-height:0;padding-block:10px 0}
+  .links{display:flex;order:3;flex:1 1 100%;gap:26px;overflow-x:auto;white-space:nowrap;padding-block:10px 12px;margin-inline:-2px;scrollbar-width:none}
+  .links::-webkit-scrollbar{display:none}
+  .portrait{max-width:300px}
+  .portrait::after{display:none}
+}
+@media(max-width:560px){
+  .btns .btn{width:100%}
+  .hero h1{font-size:2rem;text-wrap:pretty}
+}
+
 /* Hero */
 .hero{overflow-x:clip;padding-block:clamp(36px,6vw,80px) clamp(24px,4vw,48px)}
 .hero-grid{display:grid;gap:48px;align-items:center}
