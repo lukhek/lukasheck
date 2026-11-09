@@ -296,26 +296,6 @@ details p{padding:0 40px 24px 0;color:var(--muted);max-width:62ch}
 .foot{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;font-size:.85rem;color:var(--deep-muted)}
 .foot a{text-decoration:none}.foot a:hover{color:var(--on-deep)}
 
-/* Exit popup */
-html.xp-open{overflow:hidden}
-.xp{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;opacity:0;transition:opacity .22s}
-.xp.on{opacity:1}
-.xp-back{position:absolute;inset:0;background:color-mix(in srgb,var(--deep) 78%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.xp-card{position:relative;isolation:isolate;width:100%;max-width:520px;background:var(--deep);color:var(--on-deep);border:1px solid var(--deep-line);border-radius:14px;padding:clamp(28px,5vw,44px);box-shadow:0 30px 70px -28px rgba(0,0,0,.8),0 0 40px -10px color-mix(in srgb,var(--accent) 40%,transparent);transform:translateY(14px) scale(.98);transition:transform .25s}
-.xp.on .xp-card{transform:none}
-.xp-card:focus{outline:none}
-.xp-glow{position:absolute;inset:-30% -20% auto auto;width:70%;height:70%;z-index:-1;background:radial-gradient(60% 60% at 60% 40%,color-mix(in srgb,var(--accent) 34%,transparent),transparent 70%);filter:blur(30px);pointer-events:none}
-.xp-card .eyebrow{color:var(--accent)}
-.xp-card h2{font-size:clamp(1.55rem,4.2vw,2.1rem);font-weight:300;margin-block:14px 16px}
-.xp-card p{color:var(--deep-muted);font-size:1rem}
-.xp-hero{display:inline-block;margin-top:18px;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--warm);border:1px solid var(--warm);border-radius:999px;padding:6px 12px}
-.xp-card .btns{margin-top:26px}
-.xp-card .btn-secondary{color:var(--on-deep);border-color:var(--deep-line);font-weight:500}
-.xp-card .btn-secondary:hover{background:var(--on-deep);color:var(--deep);border-color:var(--on-deep)}
-.xp-x{position:absolute;top:12px;right:12px;width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:50%;background:transparent;color:var(--deep-muted);cursor:pointer;transition:color .2s,background .2s}
-.xp-x:hover{color:var(--on-deep);background:color-mix(in srgb,var(--on-deep) 8%,transparent)}
-@media(prefers-reduced-motion:reduce){.xp,.xp-card{transition:none!important}}
-
 /* Mobile sticky CTA */
 .bar-m{position:fixed;left:0;right:0;bottom:0;z-index:60;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;transform:translateY(110%);transition:transform .3s}
 .bar-m.on{transform:none}
@@ -585,22 +565,6 @@ html.xp-open{overflow:hidden}
 </section>
 </main>
 
-<div class="xp" id="xp" hidden>
-  <div class="xp-back" data-xp-close></div>
-  <div class="xp-card" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="xp-t" aria-describedby="xp-d">
-    <button type="button" class="xp-x" aria-label="Close" data-xp-close><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg></button>
-    <div class="xp-glow" aria-hidden="true"></div>
-    <div class="eyebrow">Leverium · Skincare</div>
-    <h2 id="xp-t">Want skincare that's actually worth your shelf space?</h2>
-    <p id="xp-d">For years, good skincare was a frustration for me and my clients: lots of marketing, little substance. So I founded Leverium. Exceptional products with outstanding actives. No fluff.</p>
-    <span class="xp-hero">Hero product · Cu3 GHK-Cu Serum</span>
-    <div class="btns">
-      <a class="btn btn-primary" href="https://leverium.skin/?utm_source=lukasheck&amp;utm_medium=exit_popup&amp;utm_campaign=en" target="_blank" rel="noopener" data-xp-cta>Discover Leverium</a>
-      <button type="button" class="btn btn-secondary" data-xp-close>No thanks</button>
-    </div>
-  </div>
-</div>
-
 <div class="bar-m" id="barm" aria-label="Quick access">
   <a class="btn btn-primary" href="https://calendar.app.google/8QLqR8UWoCpWDDJw7" target="_blank" rel="noopener">Intro call</a>
   <a class="btn btn-secondary" href="#PLATZHALTER-CHECKOUT">Book now</a>
@@ -637,63 +601,5 @@ html.xp-open{overflow:hidden}
 })();
 </script>
 
-<script>
-(function(){
-  var el=document.getElementById('xp');
-  if(!el)return;
-  var SEEN='lev_xp_seen',UNTIL='lev_xp_until',DAY=864e5;
-  function blocked(){
-    try{
-      if(sessionStorage.getItem(SEEN))return true;
-      return Date.now()<(+localStorage.getItem(UNTIL)||0);
-    }catch(e){return false}
-  }
-  if(blocked())return;
-  var start=Date.now(),shown=false,lastFocus=null;
-  var card=el.querySelector('.xp-card');
-  function focusables(){return card.querySelectorAll('a[href],button:not([disabled])')}
-  function open(){
-    if(shown||Date.now()-start<6000)return;
-    shown=true;lastFocus=document.activeElement;
-    try{sessionStorage.setItem(SEEN,'1')}catch(e){}
-    el.hidden=false;document.documentElement.classList.add('xp-open');
-    requestAnimationFrame(function(){el.classList.add('on');card.focus()});
-  }
-  function close(days){
-    try{localStorage.setItem(UNTIL,String(Date.now()+days*DAY))}catch(e){}
-    el.classList.remove('on');document.documentElement.classList.remove('xp-open');
-    setTimeout(function(){el.hidden=true},230);
-    if(lastFocus&&lastFocus.focus)try{lastFocus.focus()}catch(e){}
-  }
-  el.addEventListener('click',function(e){
-    if(e.target.closest('[data-xp-close]'))close(7);
-    else if(e.target.closest('[data-xp-cta]'))close(30);
-  });
-  document.addEventListener('keydown',function(e){
-    if(el.hidden)return;
-    if(e.key==='Escape'){close(7);return}
-    if(e.key==='Tab'){
-      var f=focusables();if(!f.length)return;
-      var a=f[0],z=f[f.length-1];
-      if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}
-      else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}
-    }
-  });
-  /* Desktop: Maus verlässt das Fenster nach oben (Tab-Leiste, Adressfeld, Schließen) */
-  document.documentElement.addEventListener('mouseleave',function(e){if(e.clientY<=0)open()});
-  /* Mobil: schneller Scroll nach oben, nachdem schon ein Teil gelesen wurde */
-  var coarse=window.matchMedia&&matchMedia('(pointer:coarse)').matches;
-  if(coarse){
-    var maxY=0,sy=window.scrollY,st=Date.now();
-    window.addEventListener('scroll',function(){
-      var y=window.scrollY,t=Date.now();
-      if(y>maxY)maxY=y;
-      var total=document.documentElement.scrollHeight-window.innerHeight;
-      if(t-st>300){sy=y;st=t}
-      else if(sy-y>110&&maxY>total*.45)open();
-    },{passive:true});
-  }
-})();
-</script>
 </body>
 </html>
