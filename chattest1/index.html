@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Haut-Chat Test | Lukas Heck</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0A191C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Raleway:wght@300;400;500;600;700&display=swap">
+<style>
+:root{--bg:#0A191C;--surface:#10272B;--fg:#E7EEEB;--muted:#93A8A6;--line:#23403F;--accent:#43B8C1;--accent-hover:#6BCBD2;--on-accent:#04181B;--accent-soft:#12363A;--font:'Raleway',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;display:flex;justify-content:center}
+.app{width:100%;max-width:720px;height:100dvh;display:flex;flex-direction:column;padding:20px 20px 16px}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:500}
+h1{font-weight:400;font-size:clamp(1.5rem,4vw,2rem);letter-spacing:-.02em;line-height:1.15;margin:6px 0 4px}
+.sub{color:var(--muted);font-size:.9rem;margin:0 0 14px}
+#log{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:12px;padding:4px 2px 12px}
+.m{max-width:88%;padding:12px 16px;border-radius:18px;white-space:pre-wrap;word-wrap:break-word;font-size:.98rem}
+.m.bot{background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:6px;align-self:flex-start}
+.m.me{background:var(--accent);color:var(--on-accent);border-bottom-right-radius:6px;align-self:flex-end;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 4px}
+.chip{font:500 .8rem/1 var(--mono);color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:9px 13px;cursor:pointer;transition:color .2s,border-color .2s}
+.chip:hover{color:var(--fg);border-color:var(--accent)}
+form{display:flex;gap:10px;padding-top:8px}
+input{flex:1;min-width:0;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:14px 20px;font:inherit;font-size:1rem}
+input:focus{outline:2px solid var(--accent);outline-offset:2px;border-color:transparent}
+button.send{background:var(--accent);color:var(--on-accent);border:0;border-radius:999px;min-width:52px;font:600 1rem var(--font);cursor:pointer;padding:0 22px;transition:background .2s}
+button.send:hover{background:var(--accent-hover)}
+button.send:disabled{opacity:.5;cursor:default}
+.note{font-size:.72rem;color:var(--muted);text-align:center;margin:10px 0 0}
+.dots span{display:inline-block;width:6px;height:6px;margin:0 2px;border-radius:50%;background:var(--muted);animation:b 1s infinite}
+.dots span:nth-child(2){animation-delay:.15s}.dots span:nth-child(3){animation-delay:.3s}
+@keyframes b{0%,80%,100%{opacity:.25}40%{opacity:1}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="app">
+  <div class="eyebrow">Lukas Heck · Test</div>
+  <h1>Haut-Chat</h1>
+  <p class="sub">Kurze, alltagstaugliche Antworten zu moderner Hautgesundheit.</p>
+  <div id="log" aria-live="polite">
+    <div class="m bot">Hi! Ich beantworte deine Fragen rund um Haut: Barriere, Wirkstoffe, Sonnenschutz, Ernährung. Womit fangen wir an?</div>
+    <div class="chips" id="chips">
+      <button class="chip" type="button">Routine für Anfänger</button>
+      <button class="chip" type="button">Retinol richtig starten</button>
+      <button class="chip" type="button">Haut brennt und spannt</button>
+      <button class="chip" type="button">Was hilft von innen?</button>
+    </div>
+  </div>
+  <form id="f" autocomplete="off">
+    <input id="q" type="text" maxlength="400" placeholder="Deine Frage zur Haut…" aria-label="Frage">
+    <button class="send" id="b" type="submit" aria-label="Senden">→</button>
+  </form>
+  <p class="note">Allgemeine Information, keine medizinische Beratung oder Diagnose.</p>
+</main>
+<script>
+const log=document.getElementById('log'),f=document.getElementById('f'),q=document.getElementById('q'),b=document.getElementById('b');
+let hist=[];
+function add(t,c){const d=document.createElement('div');d.className='m '+c;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight;return d}
+async function ask(t){
+  t=t.trim();if(!t||b.disabled)return;
+  document.getElementById('chips')?.remove();
+  add(t,'me');hist.push({role:'user',content:t});q.value='';b.disabled=true;
+  const w=add('','bot');w.innerHTML='<span class="dots"><span></span><span></span><span></span></span>';
+  try{
+    const r=await fetch('/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({messages:hist})});
+    const d=await r.json();
+    const txt=d.reply||d.error||'Fehler.';
+    w.textContent=txt;if(d.reply)hist.push({role:'assistant',content:txt});else hist.pop();
+  }catch(e){w.textContent='Keine Verbindung.';hist.pop()}
+  b.disabled=false;log.scrollTop=log.scrollHeight;q.focus();
+}
+f.addEventListener('submit',e=>{e.preventDefault();ask(q.value)});
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>ask(c.textContent)));
+</script>
+</body>
+</html>
