@@ -53,50 +53,26 @@ details p{margin-top:10px;color:var(--muted)}
 header.top{position:absolute;inset:0 0 auto 0;z-index:3;padding:18px 0}
 header.top span{font-family:var(--mono);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fg)}
 /* Hero */
-.hero{position:relative;min-height:900px;display:flex;flex-direction:column;overflow:hidden;background:linear-gradient(#06181b,#0b2327 38%)}
-.hero svg.track{position:absolute;inset:0;width:100%;height:100%}
-.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,25,28,.55) 0%,rgba(10,25,28,.2) 48%,rgba(10,25,28,0) 72%,rgba(10,25,28,.0) 88%,var(--bg) 100%);pointer-events:none}
-.hero .wrap{position:relative;z-index:2;padding-top:clamp(96px,16vh,150px)}
-.hero h1{font-size:clamp(2.3rem,6vw,4.2rem);margin-bottom:18px}
-.hero .lede{font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--fg);max-width:34ch}
-.hero .intro{margin-top:22px;max-width:52ch;color:var(--muted)}
+.hero{position:relative;padding:clamp(64px,11vw,128px) 0 clamp(48px,7vw,80px);background:radial-gradient(900px 420px at 18% 0%,rgba(67,184,193,.14),transparent 70%)}
+.hero h1{font-size:clamp(2.2rem,5.4vw,3.8rem);margin-bottom:18px}
+.hero .lede{font-size:clamp(1.1rem,2vw,1.35rem);color:var(--fg);max-width:34ch}
+.weeks{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;margin-top:34px;max-width:420px}
+.weeks i{height:4px;border-radius:2px;background:var(--line)}
+.weeks i.on{background:var(--accent)}
+.wlabel{display:flex;justify-content:space-between;max-width:420px;margin-top:8px;font:500 .68rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.hero .intro{margin-top:28px;max-width:52ch;color:var(--muted)}
 footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
 </style>
 </head>
 <body>
 
 <section class="hero">
-  <header class="top"><div class="wrap" style="padding-top:0"><span>Clarity Protocol</span></div></header>
-  <svg class="track" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-    <defs>
-      <filter id="grain" x="0" y="0" width="100%" height="100%">
-        <feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="2" seed="7" result="n"/>
-        <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 -.12"/>
-      </filter>
-      <linearGradient id="tr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6c3222"/><stop offset=".5" stop-color="#9c492d"/><stop offset="1" stop-color="#bb5a39"/></linearGradient>
-      <linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d2420"/><stop offset="1" stop-color="#17392f"/></linearGradient>
-      <clipPath id="tc"><polygon points="600,440 360,800 1800,800"/></clipPath>
-    </defs>
-    <rect x="0" y="440" width="1200" height="360" fill="url(#gr)"/>
-    <polygon points="600,440 360,800 1800,800" fill="url(#tr)"/>
-    <g clip-path="url(#tc)"><rect x="0" y="440" width="1200" height="360" filter="url(#grain)" opacity=".5"/></g>
-    <!-- Bahnlinien -->
-    <g stroke="#f4f6f2" stroke-width="3" opacity=".95" stroke-linecap="round">
-      <line x1="600" y1="440" x2="360" y2="800" stroke-width="5"/>
-      <line x1="600" y1="440" x2="840" y2="800"/>
-      <line x1="600" y1="440" x2="1320" y2="800"/>
-      <line x1="600" y1="440" x2="1800" y2="800"/>
-    </g>
-    <!-- Startlinie: Bahn 1 hell, übrige Bahnen gedämpft -->
-    <polygon points="466.7,640 733.3,640 741.3,652 458.7,652" fill="#fff"/>
-    <polygon points="733.3,640 1000,640 1023.9,652 741.3,652" fill="#fff" opacity=".75"/>
-    <!-- Bahnnummer -->
-    <g transform="translate(600 722) scale(1 .5)" fill="#fff"><text font-family="Raleway,Inter,sans-serif" font-weight="700" font-size="124" text-anchor="middle">1</text></g>
-    <polygon points="600,440 360,800 840,800" fill="#ffe2c4" opacity=".06"/>
-  </svg>
   <div class="wrap">
+    <span class="eyebrow">Clarity Protocol</span>
     <h1>So läuft das Clarity Protocol ab.</h1>
     <p class="lede">12 Wochen. Endlich ein Plan, der wirklich zu deinem Körper und Zielen passt.</p>
+    <div class="weeks" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="wlabel" aria-hidden="true"><span>Woche 1</span><span>Woche 12</span></div>
     <p class="intro">Wir empfehlen dir, diese Seite einmal ganz durchzulesen. So bekommst du einen Überblick über den Ablauf. Danach startest du mit dem Wesentlichen: dem Fragebogen.</p>
   </div>
 </section>
@@ -155,7 +131,6 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
     <div class="lvl"><i>2</i><div><b>Empfohlen</b><br>Zusätzlich der ausführliche Fragebogen (10 bis 20 Min.).</div></div>
     <div class="lvl"><i>3</i><div><b>Optimal</b><br>Zusätzlich aktuelle Blutwerte und VO2max.</div></div>
   </div>
-  <p class="muted">Alles darüber hinaus ist freiwillig.</p>
 </div></section>
 
 <section class="sec"><div class="wrap">
