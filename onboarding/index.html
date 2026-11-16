@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>So läuft das Clarity Protocol ab</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0A191C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Raleway:wght@300;400;500;600;700&display=swap">
+<style>
+:root{--bg:#0A191C;--surface:#10272B;--fg:#E7EEEB;--muted:#93A8A6;--line:#23403F;--accent:#43B8C1;--accent-hover:#6BCBD2;--on-accent:#04181B;--accent-soft:#12363A;--warm:#CDAA6E;--warm-soft:#2A2519;--font:'Raleway',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+h1,h2,h3{font-weight:400;line-height:1.12;letter-spacing:-.02em;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{width:100%;max-width:880px;margin-inline:auto;padding-inline:20px}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:14px;display:block}
+.sec{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--line)}
+h2{font-size:clamp(1.7rem,3.6vw,2.5rem);margin-bottom:18px}
+.sub{font-size:1.2rem;color:var(--fg);margin-bottom:14px}
+.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 28px;border-radius:999px;font:600 1rem/1.2 var(--font);text-decoration:none;background:var(--accent);color:var(--on-accent);transition:background .2s}
+.btn:hover{background:var(--accent-hover)}
+.note{margin-top:18px;padding:16px 20px;background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 10px 10px 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+ul.tick{list-style:none;padding:0;margin:16px 0}
+ul.tick li{position:relative;padding-left:28px;margin:10px 0}
+ul.tick li:before{content:"";position:absolute;left:4px;top:.6em;width:10px;height:6px;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+ol.steps{padding-left:22px;margin:16px 0}
+ol.steps li{margin:8px 0}
+.days{display:grid;gap:12px;margin:20px 0}
+.day,.week{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.day b,.week b{font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:500;padding-top:3px}
+@media(max-width:560px){.day,.week{grid-template-columns:1fr;gap:4px}}
+.levels{display:grid;gap:12px;margin:20px 0}
+.lvl{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+.lvl i{font-style:normal;font-family:var(--mono);width:44px;height:44px;border-radius:50%;border:1.5px solid var(--accent);display:grid;place-items:center;color:var(--accent)}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}
+@media(max-width:560px){.pillars{grid-template-columns:1fr}}
+.pillars .card h3{font-size:1.1rem;font-weight:600;margin-bottom:6px}
+.flow,.sweet{display:block;width:100%;height:auto;margin:22px 0}
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--accent);font-size:1.4rem;line-height:1}
+details[open] summary:after{content:"–"}
+details p{margin-top:10px;color:var(--muted)}
+header.top{position:absolute;inset:0 0 auto 0;z-index:3;padding:18px 0}
+header.top span{font-family:var(--mono);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fg)}
+/* Hero */
+.hero{position:relative;min-height:900px;display:flex;flex-direction:column;overflow:hidden;background:linear-gradient(#06181b,#0b2327 38%)}
+.hero svg.track{position:absolute;inset:0;width:100%;height:100%}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,25,28,.55) 0%,rgba(10,25,28,.2) 48%,rgba(10,25,28,0) 72%,rgba(10,25,28,.0) 88%,var(--bg) 100%);pointer-events:none}
+.hero .wrap{position:relative;z-index:2;padding-top:clamp(96px,16vh,150px)}
+.hero h1{font-size:clamp(2.3rem,6vw,4.2rem);margin-bottom:18px}
+.hero .lede{font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--fg);max-width:34ch}
+.hero .intro{margin-top:22px;max-width:52ch;color:var(--muted)}
+footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <header class="top"><div class="wrap" style="padding-top:0"><span>Clarity Protocol</span></div></header>
+  <svg class="track" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="grain" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="2" seed="7" result="n"/>
+        <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 -.12"/>
+      </filter>
+      <linearGradient id="tr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6c3222"/><stop offset=".5" stop-color="#9c492d"/><stop offset="1" stop-color="#bb5a39"/></linearGradient>
+      <linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d2420"/><stop offset="1" stop-color="#17392f"/></linearGradient>
+      <clipPath id="tc"><polygon points="600,440 360,800 1800,800"/></clipPath>
+    </defs>
+    <rect x="0" y="440" width="1200" height="360" fill="url(#gr)"/>
+    <polygon points="600,440 360,800 1800,800" fill="url(#tr)"/>
+    <g clip-path="url(#tc)"><rect x="0" y="440" width="1200" height="360" filter="url(#grain)" opacity=".5"/></g>
+    <!-- Bahnlinien -->
+    <g stroke="#f4f6f2" stroke-width="3" opacity=".95" stroke-linecap="round">
+      <line x1="600" y1="440" x2="360" y2="800" stroke-width="5"/>
+      <line x1="600" y1="440" x2="840" y2="800"/>
+      <line x1="600" y1="440" x2="1320" y2="800"/>
+      <line x1="600" y1="440" x2="1800" y2="800"/>
+    </g>
+    <!-- Startlinie: Bahn 1 hell, übrige Bahnen gedämpft -->
+    <polygon points="466.7,640 733.3,640 741.3,652 458.7,652" fill="#fff"/>
+    <polygon points="733.3,640 1000,640 1023.9,652 741.3,652" fill="#fff" opacity=".75"/>
+    <!-- Bahnnummer -->
+    <g transform="translate(600 722) scale(1 .5)" fill="#fff"><text font-family="Raleway,Inter,sans-serif" font-weight="700" font-size="124" text-anchor="middle">1</text></g>
+    <polygon points="600,440 360,800 840,800" fill="#ffe2c4" opacity=".06"/>
+  </svg>
+  <div class="wrap">
+    <h1>So läuft das Clarity Protocol ab.</h1>
+    <p class="lede">12 Wochen. Endlich ein Plan, der wirklich zu deinem Körper und Zielen passt.</p>
+    <p class="intro">Wir empfehlen dir, diese Seite einmal ganz durchzulesen. So bekommst du einen Überblick über den Ablauf. Danach startest du mit dem Wesentlichen: dem Fragebogen.</p>
+  </div>
+</section>
+
+<main>
+<section class="sec" id="start"><div class="wrap">
+  <span class="eyebrow">Dein erster Schritt</span>
+  <h2>Der Fragebogen.</h2>
+  <p>Beantworte den Pflichtteil des Fragebogens (ca. 5 Min.). <em class="muted">Den Link findest du am Ende noch einmal.</em></p>
+  <p style="margin:22px 0 6px" class="muted">Wenn du direkt starten möchtest:</p>
+  <a class="btn" href="#fragebogen-link">Jetzt mit Fragebogen loslegen</a>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Der kleine Supplement-Reset</span>
+  <h2>Dein Neustart in Woche 1.</h2>
+  <p>Zum Start legst du eine Woche Pause bei deinen Supplementen ein. Das bringt dir:</p>
+  <ul class="tick">
+    <li>Einen klaren Ausgangspunkt für alles Weitere</li>
+    <li>Eine Verschnaufpause für deinen Körper. Sie kann dabei helfen, Leber und Darm zu entlasten.</li>
+    <li>Verlässlichere Blutwerte, zum Beispiel ohne Verfälschung durch Biotin</li>
+    <li>Mehr Überblick, was du wirklich brauchst. Das kann Aufwand und Geld sparen.</li>
+    <li>Einen gezielten Neustart, bei dem du Produkte danach schrittweise zurückholst</li>
+  </ul>
+  <div class="card">
+    <h3 style="font-size:1.1rem;font-weight:600;margin-bottom:6px">So einfach geht's</h3>
+    <ol class="steps">
+      <li>Eine Woche Pause bei allen Supplementen, außer Omega-3. Start ist an Tag 2.</li>
+      <li>Danach machst du, wenn du möchtest, ein frisches Blutbild.</li>
+      <li>Anschließend holst du deine Produkte schrittweise zurück.</li>
+    </ol>
+  </div>
+  <div class="note"><em>Wenn du bereits Kunde bist und aktuelle Blutwerte vorliegen:</em> Hier reichen 3 Tage vor der Blutabnahme ohne Supplemente, Omega-3 ausgenommen.</div>
+  <p class="muted" style="margin-top:16px">Medikamente und alles, was ärztlich verordnet ist, nimmst du selbstverständlich weiter.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Dein Fragebogen</span>
+  <h2>Der Ausgangspunkt für alles Weitere.</h2>
+  <p>Hier erfahren wir, wo du stehst und was du erreichen möchtest. Im Fragebogen fragen wir auch, ob du ein frisches Blutbild machen lassen möchtest. Das empfehlen wir, es ist aber nicht verpflichtend.</p>
+  <svg class="flow" viewBox="0 0 800 130" role="img" aria-label="Fragebogen, dann Quick Wins und Biomarker-Auswahl, dann Fahrplan">
+    <g font-family="Raleway,sans-serif" font-size="17" text-anchor="middle">
+      <rect x="4" y="25" width="220" height="80" rx="16" fill="#10272B" stroke="#43B8C1" stroke-width="1.5"/><text x="114" y="71" fill="#E7EEEB">Fragebogen</text>
+      <rect x="290" y="25" width="220" height="80" rx="16" fill="#10272B" stroke="#43B8C1" stroke-width="1.5"/><text x="400" y="62" fill="#E7EEEB">Quick Wins &amp;</text><text x="400" y="84" fill="#E7EEEB">Biomarker-Auswahl</text>
+      <rect x="576" y="25" width="220" height="80" rx="16" fill="#43B8C1"/><text x="686" y="71" fill="#04181B" font-weight="600">Fahrplan</text>
+      <g stroke="#43B8C1" stroke-width="2" fill="none"><path d="M232 65h50M274 57l8 8-8 8"/><path d="M518 65h50M560 57l8 8-8 8"/></g>
+    </g>
+  </svg>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">So kommst du am besten zum Ziel</span>
+  <h2>Du entscheidest, wie tief wir gehen.</h2>
+  <div class="levels">
+    <div class="lvl"><i>1</i><div><b>Mindestens</b><br>Der Pflichtteil des Fragebogens. Damit kannst du starten.</div></div>
+    <div class="lvl"><i>2</i><div><b>Empfohlen</b><br>Zusätzlich der ausführliche Fragebogen (10 bis 20 Min.).</div></div>
+    <div class="lvl"><i>3</i><div><b>Optimal</b><br>Zusätzlich aktuelle Blutwerte und VO2max.</div></div>
+  </div>
+  <p class="muted">Alles darüber hinaus ist freiwillig.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Deine erste Woche</span>
+  <h2>Ein ruhiger, klarer Start.</h2>
+  <div class="days">
+    <div class="day"><b>Tag 1</b><div>Start, Fragebogen und Überblick</div></div>
+    <div class="day"><b>Tag 2</b><div>Der Supplement-Reset beginnt</div></div>
+    <div class="day"><b>Tag 3 bis 7</b><div><strong>Deine ersten Quick Wins.</strong> Du musst nicht auf die Auswertung warten. Schon aus deinem Fragebogen lassen sich oft erste persönliche Ansatzpunkte erkennen. Du bekommst wenige, bewusst ausgewählte Maßnahmen, mit denen du direkt starten kannst, zum Beispiel für Energie, Schlaf oder Verdauung. So kommst du sofort ins Handeln, ohne dich mit zehn Veränderungen gleichzeitig zu überfordern.</div></div>
+  </div>
+  <p>In Woche 1 brauchen wir nur den Fragebogen von dir. Deine Quick Wins setzt du in deinem Tempo um.</p>
+  <div class="note"><em>Optional:</em> Vorhandene Blutbilder und Gesundheitsdaten kannst du uns jederzeit schicken, per WhatsApp an <a href="https://wa.me/4916090255862">+49 160 902 558 62</a> oder per E-Mail an <a href="mailto:info@lukasheck.com">info@lukasheck.com</a>.</div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Dein Fahrplan in 12 Wochen</span>
+  <h2>Was wann passiert.</h2>
+  <div class="days">
+    <div class="week"><b>Woche 1</b><div>Start, Supplement-Reset und Quick Wins. Optional: vorhandene Blutbilder und Biomarker schicken und am Ende des Resets ein frisches Blutbild machen.</div></div>
+    <div class="week"><b>Woche 2–3</b><div>Auswertung aller Daten und Werte</div></div>
+    <div class="week"><b>Woche 4</b><div>Dein persönlicher Fahrplan mit klaren Prioritäten, konkreten Produkten, Dosierungen, Einnahmezeitpunkten und Einkaufsliste. Du verstehst, was du tust, warum du es tust und woran wir Fortschritte erkennen.</div></div>
+    <div class="week"><b>Woche 5–12</b><div>Umsetzung deines Fahrplans, mit Check-in zur Halbzeit</div></div>
+    <div class="week"><b>Woche 12</b><div>Deine Bilanz. Wenn passende Biomarker erhoben wurden, zeigt eine erneute Messung objektive Veränderungen. Dazu schauen wir auf Energie, Schlaf, Verdauung und deine persönlichen Ziele. Danach: Clarity Vertiefung oder Clarity Kompass.</div></div>
+  </div>
+  <p class="muted">Dein Plan bleibt flexibel. Da Clarity ein individuelles Coaching ist, passen wir ihn jederzeit an, wenn sich bei dir etwas ändert.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Deine Blutabnahme</span>
+  <h2>Damit alles glatt läuft.</h2>
+  <div class="card"><ul class="tick" style="margin:0">
+    <li><b>Uhrzeit:</b> am besten zwischen 6 und 10 Uhr, spätestens bis 12 Uhr</li>
+    <li><b>Medikamente:</b> weiter nehmen wie verordnet</li>
+    <li><b>Infekt:</b> Termin lieber absagen</li>
+    <li><b>72 Stunden vorher:</b> kein Biotin, keine Flüge</li>
+    <li><b>48 Stunden vorher:</b> kein hartes Training</li>
+    <li><b>24 Stunden vorher:</b> keine Supplemente (Omega-3 ausgenommen), kein Alkohol, kein Training</li>
+    <li><b>12 Stunden vorher:</b> nüchtern bleiben</li>
+    <li><b>Morgens:</b> 300 bis 400 ml Wasser, kein Kaffee, kein Tee, kein Koffein</li>
+  </ul></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Ergebnisse zählen</span>
+  <h2>Nicht möglichst viele Maßnahmen. Sondern die richtigen.</h2>
+  <p>Das Herzstück von Clarity ist dein individueller Fahrplan mit Supplementen, die zu deinem Körper und deinen Daten passen. Wir konzentrieren uns auf die Hebel, die für dein Wohlbefinden und deine Leistungsfähigkeit besonders relevant sind. Dabei zählen nicht nur Biomarker, sondern auch, wie du dich tatsächlich fühlst.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">So entsteht dein Plan</span>
+  <h2>Vier Perspektiven, ein Sweet Spot.</h2>
+  <svg class="sweet" viewBox="0 0 700 520" role="img" aria-label="Vier überlappende Kreise: Science, Expertennetzwerk, Coaching-Erfahrung, Deine Lebensrealität. In der Mitte der Clarity Sweet Spot.">
+    <g font-family="Raleway,sans-serif" font-size="17" text-anchor="middle" fill="#E7EEEB">
+      <circle cx="280" cy="190" r="140" fill="#43B8C1" fill-opacity=".28" stroke="#43B8C1"/>
+      <circle cx="420" cy="190" r="140" fill="#43B8C1" fill-opacity=".28" stroke="#43B8C1"/>
+      <circle cx="280" cy="330" r="140" fill="#CDAA6E" fill-opacity=".26" stroke="#CDAA6E"/>
+      <circle cx="420" cy="330" r="140" fill="#CDAA6E" fill-opacity=".26" stroke="#CDAA6E"/>
+      <text x="215" y="130">Science</text>
+      <text x="485" y="122">Experten-</text><text x="485" y="144">netzwerk</text>
+      <text x="215" y="392">Coaching-</text><text x="215" y="414">Erfahrung</text>
+      <text x="485" y="392">Deine Lebens-</text><text x="485" y="414">realität</text>
+      <circle cx="350" cy="260" r="62" fill="#0A191C" stroke="#E7EEEB" stroke-opacity=".5"/>
+      <text x="350" y="256" font-weight="600">CLARITY</text><text x="350" y="278" font-weight="600">Sweet Spot</text>
+    </g>
+  </svg>
+  <div class="pillars">
+    <div class="card"><h3>Science</h3><p class="muted">Wissenschaftliche Erkenntnisse sind die wichtigste Grundlage.</p></div>
+    <div class="card"><h3>Expertennetzwerk</h3><p class="muted">Der Austausch mit Fachleuten schärft jede Empfehlung.</p></div>
+    <div class="card"><h3>Coaching-Erfahrung</h3><p class="muted">Du profitierst von über einem Jahrzehnt Praxiserfahrung von Lukas Heck, Health- und Performance-Trainer und Spezialist für Wohlbefinden und Leistungsfähigkeit.</p></div>
+    <div class="card"><h3>Deine Lebensrealität</h3><p class="muted">Deine Ziele, dein Alltag, deine Intuition und Daten.</p></div>
+  </div>
+  <p>Dort, wo alles zusammenkommt, liegt dein Sweet Spot: ein Plan, der wirkt und in dein Leben passt.</p>
+  <p class="muted" style="margin-top:14px">Zur Auswertung setzen wir auch KI-gestützte Werkzeuge ein.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Dein Kundenservice</span>
+  <h2>Deine Fragen, rund um die Uhr.</h2>
+  <p>Während des gesamten Programms kannst du uns per WhatsApp schreiben: <a href="https://wa.me/4916090255862">+49 160 902 558 62</a>. Sammle deine Notizen und Fragen einfach dort.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Deine Zufriedenheitsgarantie</span>
+  <p class="sub">Du bist am Ende nicht zufrieden oder es hat sich bei dir nichts getan? Dann möchten wir dein Geld auch nicht behalten. Schreib uns nach Woche 12 einfach kurz an <a href="mailto:info@lukasheck.com">info@lukasheck.com</a>.</p>
+  <p style="margin:34px 0 18px;font-size:1.3rem"><em>Willkommen an Bord. Wir freuen uns auf den Start.</em></p>
+  <a class="btn" href="#fragebogen-link">Jetzt mit Fragebogen loslegen</a>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Häufige Fragen</span>
+  <details><summary>Muss ich ein Blutbild machen?</summary><p>Nein. Es wird empfohlen, ist aber freiwillig. Du kannst mit dem Pflichtteil starten.</p></details>
+  <details><summary>Wie schicke ich vorhandene Blutwerte?</summary><p>Per WhatsApp an +49 160 902 558 62 oder per E-Mail an info@lukasheck.com, als Foto, PDF oder Screenshot. Auch ältere Werte sind willkommen.</p></details>
+  <details><summary>Was kostet zusätzlich?</summary><p>Supplemente und Laboruntersuchungen sind nicht im Preis enthalten.</p></details>
+  <details><summary>Wie lange dauert der Fragebogen?</summary><p>Pflichtteil ca. 5 Minuten, ausführlicher Teil 10 bis 20 Minuten. Du kannst jederzeit pausieren.</p></details>
+  <details><summary>Ersetzt das eine ärztliche Beratung?</summary><p>Nein. Bei Beschwerden, Vorerkrankungen oder Medikamenten sprich bitte mit deiner Ärztin oder deinem Arzt.</p></details>
+</div></section>
+</main>
+
+<footer><div class="wrap">© Lukas Heck</div></footer>
+</body>
+</html>
