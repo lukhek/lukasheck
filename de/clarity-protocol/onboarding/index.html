@@ -55,9 +55,12 @@ summary::-webkit-details-marker{display:none}
 summary:after{content:"+";color:var(--accent);font-size:1.4rem;line-height:1}
 details[open] summary:after{content:"–"}
 details p{margin-top:10px;color:var(--muted)}
+details .ans{color:var(--muted)}
+details .ans ul.tick{margin:12px 0 4px}
+details .ans ul.tick b{color:var(--fg)}
 header.top{position:absolute;inset:0 0 auto 0;z-index:3;padding:18px 0}
 header.top span{font-family:var(--mono);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fg)}
-.lang{position:absolute;top:20px;right:20px;display:flex;gap:6px;z-index:3}
+.lang{position:absolute;top:20px;right:max(20px,calc((100% - 880px)/2 + 20px));display:flex;gap:6px;z-index:3}
 .lang a{font:500 .78rem/1 var(--mono);letter-spacing:.06em;text-decoration:none;color:var(--muted);padding:8px 12px;border:1px solid var(--line);border-radius:999px;transition:.2s}
 .lang a:hover{color:var(--fg);border-color:var(--muted)}
 .lang a[aria-current]{color:var(--fg);border-color:var(--accent)}
@@ -157,21 +160,6 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 </div></section>
 
 <section class="sec"><div class="wrap">
-  <span class="eyebrow">Deine frische Blutabnahme</span>
-  <h2>Damit alles glatt läuft.</h2>
-  <div class="card"><ul class="tick" style="margin:0">
-    <li><b>Uhrzeit:</b> am besten zwischen 6 und 10 Uhr, spätestens bis 12 Uhr</li>
-    <li><b>Medikamente:</b> weiter nehmen wie verordnet</li>
-    <li><b>Infekt:</b> Termin lieber absagen</li>
-    <li><b>72 Stunden vorher:</b> kein Biotin, keine Flüge</li>
-    <li><b>48 Stunden vorher:</b> kein hartes Training</li>
-    <li><b>24 Stunden vorher:</b> keine Supplemente (Omega-3 ausgenommen), kein Alkohol, kein Training</li>
-    <li><b>12 Stunden vorher:</b> nüchtern bleiben</li>
-    <li><b>Morgens:</b> 300 bis 400 ml Wasser, kein Kaffee, kein Tee, kein Koffein</li>
-  </ul></div>
-</div></section>
-
-<section class="sec"><div class="wrap">
   <span class="eyebrow">Ergebnisse zählen</span>
   <h2>Nicht möglichst viele Maßnahmen. Sondern die richtigen.</h2>
   <p>Das Herzstück von Clarity ist dein individueller Fahrplan mit Supplementen, die zu deinem Körper und deinen Daten passen. Wir konzentrieren uns auf die Hebel, die für dein Wohlbefinden und deine Leistungsfähigkeit besonders relevant sind. Dabei zählen nicht nur Biomarker, sondern auch, wie du dich tatsächlich fühlst.</p>
@@ -225,6 +213,16 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 <section class="sec"><div class="wrap">
   <span class="eyebrow">Häufige Fragen</span>
   <details><summary>Muss ich ein Blutbild machen?</summary><p>Nein. Es wird empfohlen, ist aber freiwillig. Du kannst mit dem Pflichtteil starten.</p></details>
+  <details><summary>Was muss ich beachten, wenn ich jetzt noch einmal ein frisches Blutbild mit eurer Biomarker-Liste machen lasse?</summary><div class="ans"><p>In Deutschland geht es am schnellsten als Selbstzahler über einen medizinischen Dienst bzw. ein Labor vor Ort, gegebenenfalls auch über deine Ärztin oder deinen Arzt. Damit die Werte aussagekräftig sind, achte auf Folgendes:</p><ul class="tick">
+    <li><b>Uhrzeit:</b> am besten zwischen 6 und 10 Uhr, spätestens bis 12 Uhr</li>
+    <li><b>Medikamente:</b> weiter nehmen wie verordnet</li>
+    <li><b>Infekt:</b> Termin lieber absagen</li>
+    <li><b>72 Stunden vorher:</b> kein Biotin, keine Flüge</li>
+    <li><b>48 Stunden vorher:</b> kein hartes Training</li>
+    <li><b>24 Stunden vorher:</b> keine Supplemente (Omega-3 ausgenommen), kein Alkohol, kein Training</li>
+    <li><b>12 Stunden vorher:</b> nüchtern bleiben</li>
+    <li><b>Morgens:</b> 300 bis 400 ml Wasser, kein Kaffee, kein Tee, kein Koffein</li>
+  </ul></div></details>
   <details><summary>Wie schicke ich vorhandene Blutwerte?</summary><p>Per WhatsApp an +49 160 902 558 62 oder per E-Mail an info@lukasheck.com, als Foto, PDF oder Screenshot. Auch ältere Werte sind willkommen.</p></details>
   <details><summary>Was kostet zusätzlich?</summary><p>Supplemente und Laboruntersuchungen sind nicht im Preis enthalten.</p></details>
   <details><summary>Wie lange dauert der Fragebogen?</summary><p>Pflichtteil ca. 5 Minuten, ausführlicher Teil 10 bis 20 Minuten. Du kannst jederzeit pausieren.</p></details>

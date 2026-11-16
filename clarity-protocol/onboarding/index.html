@@ -55,9 +55,12 @@ summary::-webkit-details-marker{display:none}
 summary:after{content:"+";color:var(--accent);font-size:1.4rem;line-height:1}
 details[open] summary:after{content:"–"}
 details p{margin-top:10px;color:var(--muted)}
+details .ans{color:var(--muted)}
+details .ans ul.tick{margin:12px 0 4px}
+details .ans ul.tick b{color:var(--fg)}
 header.top{position:absolute;inset:0 0 auto 0;z-index:3;padding:18px 0}
 header.top span{font-family:var(--mono);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fg)}
-.lang{position:absolute;top:20px;right:20px;display:flex;gap:6px;z-index:3}
+.lang{position:absolute;top:20px;right:max(20px,calc((100% - 880px)/2 + 20px));display:flex;gap:6px;z-index:3}
 .lang a{font:500 .78rem/1 var(--mono);letter-spacing:.06em;text-decoration:none;color:var(--muted);padding:8px 12px;border:1px solid var(--line);border-radius:999px;transition:.2s}
 .lang a:hover{color:var(--fg);border-color:var(--muted)}
 .lang a[aria-current]{color:var(--fg);border-color:var(--accent)}
@@ -157,21 +160,6 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 </div></section>
 
 <section class="sec"><div class="wrap">
-  <span class="eyebrow">Your fresh blood draw</span>
-  <h2>So everything goes smoothly.</h2>
-  <div class="card"><ul class="tick" style="margin:0">
-    <li><b>Time:</b> ideally between 6 and 10 am, by 12 noon at the latest</li>
-    <li><b>Medication:</b> keep taking as prescribed</li>
-    <li><b>Infection:</b> better to cancel the appointment</li>
-    <li><b>72 hours before:</b> no biotin, no flights</li>
-    <li><b>48 hours before:</b> no hard training</li>
-    <li><b>24 hours before:</b> no supplements (omega-3 excepted), no alcohol, no training</li>
-    <li><b>12 hours before:</b> stay fasted</li>
-    <li><b>In the morning:</b> 300 to 400 ml of water, no coffee, no tea, no caffeine</li>
-  </ul></div>
-</div></section>
-
-<section class="sec"><div class="wrap">
   <span class="eyebrow">Results count</span>
   <h2>Not as many measures as possible. The right ones.</h2>
   <p>The heart of Clarity is your individual roadmap with supplements that fit your body and your data. We focus on the levers that matter most for your well-being and performance. Not only biomarkers count, but also how you actually feel.</p>
@@ -225,6 +213,16 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 <section class="sec"><div class="wrap">
   <span class="eyebrow">Frequently asked questions</span>
   <details><summary>Do I have to get a blood test?</summary><p>No. It is recommended but optional. You can start with the mandatory part.</p></details>
+  <details><summary>What should I keep in mind if I get a fresh blood test with your biomarker list?</summary><div class="ans"><p>In Germany, the fastest route is usually as a self-pay patient via a local medical service or lab, or through your doctor. To make sure your values are meaningful, please note:</p><ul class="tick">
+    <li><b>Time:</b> ideally between 6 and 10 am, by 12 noon at the latest</li>
+    <li><b>Medication:</b> keep taking as prescribed</li>
+    <li><b>Infection:</b> better to cancel the appointment</li>
+    <li><b>72 hours before:</b> no biotin, no flights</li>
+    <li><b>48 hours before:</b> no hard training</li>
+    <li><b>24 hours before:</b> no supplements (omega-3 excepted), no alcohol, no training</li>
+    <li><b>12 hours before:</b> stay fasted</li>
+    <li><b>In the morning:</b> 300 to 400 ml of water, no coffee, no tea, no caffeine</li>
+  </ul></div></details>
   <details><summary>How do I send existing blood values?</summary><p>Via WhatsApp to +49 160 902 558 62 or by email to info@lukasheck.com, as a photo, PDF or screenshot. Older values are welcome too.</p></details>
   <details><summary>What costs extra?</summary><p>Supplements and laboratory tests are not included in the price.</p></details>
   <details><summary>How long does the questionnaire take?</summary><p>Mandatory part approx. 5 minutes, detailed part 10 to 20 minutes. You can pause at any time.</p></details>
