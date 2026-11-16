@@ -41,6 +41,7 @@ ol.steps li{margin:8px 0}
 .day,.week{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
 .day b,.week b{font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:500;padding-top:3px}
 @media(max-width:560px){.day,.week{grid-template-columns:1fr;gap:4px}}
+.lvl-h{font-size:1.25rem;font-weight:500;letter-spacing:-.01em;margin:36px 0 4px}
 .levels{display:grid;gap:12px;margin:20px 0}
 .lvl{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
 .lvl i{font-style:normal;font-family:var(--mono);width:44px;height:44px;border-radius:50%;border:1.5px solid var(--accent);display:grid;place-items:center;color:var(--accent)}
@@ -99,14 +100,11 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
       <g stroke="#43B8C1" stroke-width="2" fill="none"><path d="M232 65h50M274 57l8 8-8 8"/><path d="M518 65h50M560 57l8 8-8 8"/></g>
     </g>
   </svg>
-</div></section>
-
-<section class="sec"><div class="wrap">
-  <h2>Individuelle Tiefe beim Fragebogen.</h2>
+  <h3 class="lvl-h">Individuelle Tiefe beim Fragebogen.</h3>
   <div class="levels">
-    <div class="lvl"><i>1</i><div><b>Mindestens</b><br>Der Pflichtteil des Fragebogens. Damit kannst du starten.</div></div>
-    <div class="lvl"><i>2</i><div><b>Empfohlen</b><br>Zusätzlich der ausführliche Fragebogen (10 bis 20 Min.).</div></div>
-    <div class="lvl"><i>3</i><div><b>Optimal</b><br>Zusätzlich aktuelle Blutwerte und VO2max.</div></div>
+    <div class="lvl"><i>1</i><div><b>Mindestens</b><br>Den Pflichtteil brauchen wir. Danach können wir loslegen.</div></div>
+    <div class="lvl"><i>2</i><div><b>Empfohlen</b><br>Gerne mehr Infos geben: Der ausführliche Fragebogen (10 bis 20 Min.) kostet dich etwas mehr Zeit, macht deinen Fahrplan dafür genauer.</div></div>
+    <div class="lvl"><i>3</i><div><b>Optimal</b><br>Wer noch tiefer gehen möchte, erhält auf Wunsch eine individuelle Biomarker-Liste und vereinbart einen Termin bei einer medizinischen Einrichtung vor Ort für ein frisches Blutbild.</div></div>
   </div>
 </div></section>
 
@@ -234,7 +232,7 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 </div></section>
 </main>
 
-<footer><div class="wrap">© Lukas Heck</div></footer>
+<footer><div class="wrap">© Lukas Heck · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
 <script>
 document.querySelectorAll('.lang a').forEach(function(a){a.addEventListener('click',function(){try{document.cookie='lang='+a.getAttribute('data-lang')+'; path=/; max-age=31536000; SameSite=Lax'}catch(e){}})});
 </script>
