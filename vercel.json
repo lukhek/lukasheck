@@ -51,6 +51,110 @@
       ],
       "destination": "/de/",
       "permanent": false
+    },
+    {
+      "source": "/clarity-protocol/onboarding",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "lang",
+          "value": "de"
+        }
+      ],
+      "destination": "/de/clarity-protocol/onboarding/",
+      "permanent": false
+    },
+    {
+      "source": "/clarity-protocol/onboarding",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^de.*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "lang"
+        }
+      ],
+      "destination": "/de/clarity-protocol/onboarding/",
+      "permanent": false
+    },
+    {
+      "source": "/clarity-protocol/onboarding",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "^(DE|AT|CH)$"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "lang"
+        },
+        {
+          "type": "header",
+          "key": "accept-language"
+        }
+      ],
+      "destination": "/de/clarity-protocol/onboarding/",
+      "permanent": false
+    },
+    {
+      "source": "/clarity-protocol/onboarding/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "lang",
+          "value": "de"
+        }
+      ],
+      "destination": "/de/clarity-protocol/onboarding/",
+      "permanent": false
+    },
+    {
+      "source": "/clarity-protocol/onboarding/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^de.*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "lang"
+        }
+      ],
+      "destination": "/de/clarity-protocol/onboarding/",
+      "permanent": false
+    },
+    {
+      "source": "/clarity-protocol/onboarding/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "^(DE|AT|CH)$"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "lang"
+        },
+        {
+          "type": "header",
+          "key": "accept-language"
+        }
+      ],
+      "destination": "/de/clarity-protocol/onboarding/",
+      "permanent": false
     }
   ]
 }

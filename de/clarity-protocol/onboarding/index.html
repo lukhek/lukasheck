@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>So läuft das Clarity Protocol ab</title>
 <meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://www.lukasheck.com/de/clarity-protocol/onboarding/">
+<link rel="alternate" hreflang="de" href="https://www.lukasheck.com/de/clarity-protocol/onboarding/">
+<link rel="alternate" hreflang="en" href="https://www.lukasheck.com/clarity-protocol/onboarding/">
+<link rel="alternate" hreflang="x-default" href="https://www.lukasheck.com/clarity-protocol/onboarding/">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0A191C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,6 +56,10 @@ details[open] summary:after{content:"–"}
 details p{margin-top:10px;color:var(--muted)}
 header.top{position:absolute;inset:0 0 auto 0;z-index:3;padding:18px 0}
 header.top span{font-family:var(--mono);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fg)}
+.lang{position:absolute;top:20px;right:20px;display:flex;gap:6px;z-index:3}
+.lang a{font:500 .78rem/1 var(--mono);letter-spacing:.06em;text-decoration:none;color:var(--muted);padding:8px 12px;border:1px solid var(--line);border-radius:999px;transition:.2s}
+.lang a:hover{color:var(--fg);border-color:var(--muted)}
+.lang a[aria-current]{color:var(--fg);border-color:var(--accent)}
 /* Hero */
 .hero{position:relative;padding:clamp(64px,11vw,128px) 0 clamp(48px,7vw,80px);background:radial-gradient(900px 420px at 18% 0%,rgba(67,184,193,.14),transparent 70%)}
 .hero h1{font-size:clamp(2.2rem,5.4vw,3.8rem);margin-bottom:18px}
@@ -67,6 +75,7 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 <body>
 
 <section class="hero">
+  <div class="lang" role="group" aria-label="Sprache"><a href="/clarity-protocol/onboarding/" lang="en" hreflang="en" data-lang="en">EN</a><a href="/de/clarity-protocol/onboarding/" lang="de" hreflang="de" data-lang="de" aria-current="true">DE</a></div>
   <div class="wrap">
     <span class="eyebrow">Clarity Protocol</span>
     <h1>So läuft das Clarity Protocol ab.</h1>
@@ -226,5 +235,8 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 </main>
 
 <footer><div class="wrap">© Lukas Heck</div></footer>
+<script>
+document.querySelectorAll('.lang a').forEach(function(a){a.addEventListener('click',function(){try{document.cookie='lang='+a.getAttribute('data-lang')+'; path=/; max-age=31536000; SameSite=Lax'}catch(e){}})});
+</script>
 </body>
 </html>

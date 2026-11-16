@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How the Clarity Protocol works</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://www.lukasheck.com/clarity-protocol/onboarding/">
+<link rel="alternate" hreflang="de" href="https://www.lukasheck.com/de/clarity-protocol/onboarding/">
+<link rel="alternate" hreflang="en" href="https://www.lukasheck.com/clarity-protocol/onboarding/">
+<link rel="alternate" hreflang="x-default" href="https://www.lukasheck.com/clarity-protocol/onboarding/">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0A191C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Raleway:wght@300;400;500;600;700&display=swap">
+<style>
+:root{--bg:#0A191C;--surface:#10272B;--fg:#E7EEEB;--muted:#93A8A6;--line:#23403F;--accent:#43B8C1;--accent-hover:#6BCBD2;--on-accent:#04181B;--accent-soft:#12363A;--warm:#CDAA6E;--warm-soft:#2A2519;--font:'Raleway',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+h1,h2,h3{font-weight:400;line-height:1.12;letter-spacing:-.02em;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{width:100%;max-width:880px;margin-inline:auto;padding-inline:20px}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:14px;display:block}
+.sec{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--line)}
+h2{font-size:clamp(1.7rem,3.6vw,2.5rem);margin-bottom:18px}
+.sub{font-size:1.2rem;color:var(--fg);margin-bottom:14px}
+.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 28px;border-radius:999px;font:600 1rem/1.2 var(--font);text-decoration:none;background:var(--accent);color:var(--on-accent);transition:background .2s}
+.btn:hover{background:var(--accent-hover)}
+.note{margin-top:18px;padding:16px 20px;background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 10px 10px 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+ul.tick{list-style:none;padding:0;margin:16px 0}
+ul.tick li{position:relative;padding-left:28px;margin:10px 0}
+ul.tick li:before{content:"";position:absolute;left:4px;top:.6em;width:10px;height:6px;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+ol.steps{padding-left:22px;margin:16px 0}
+ol.steps li{margin:8px 0}
+.days{display:grid;gap:12px;margin:20px 0}
+.day,.week{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.day b,.week b{font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:500;padding-top:3px}
+@media(max-width:560px){.day,.week{grid-template-columns:1fr;gap:4px}}
+.levels{display:grid;gap:12px;margin:20px 0}
+.lvl{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+.lvl i{font-style:normal;font-family:var(--mono);width:44px;height:44px;border-radius:50%;border:1.5px solid var(--accent);display:grid;place-items:center;color:var(--accent)}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}
+@media(max-width:560px){.pillars{grid-template-columns:1fr}}
+.pillars .card h3{font-size:1.1rem;font-weight:600;margin-bottom:6px}
+.flow,.sweet{display:block;width:100%;height:auto;margin:22px 0}
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--accent);font-size:1.4rem;line-height:1}
+details[open] summary:after{content:"–"}
+details p{margin-top:10px;color:var(--muted)}
+header.top{position:absolute;inset:0 0 auto 0;z-index:3;padding:18px 0}
+header.top span{font-family:var(--mono);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fg)}
+.lang{position:absolute;top:20px;right:20px;display:flex;gap:6px;z-index:3}
+.lang a{font:500 .78rem/1 var(--mono);letter-spacing:.06em;text-decoration:none;color:var(--muted);padding:8px 12px;border:1px solid var(--line);border-radius:999px;transition:.2s}
+.lang a:hover{color:var(--fg);border-color:var(--muted)}
+.lang a[aria-current]{color:var(--fg);border-color:var(--accent)}
+/* Hero */
+.hero{position:relative;padding:clamp(64px,11vw,128px) 0 clamp(48px,7vw,80px);background:radial-gradient(900px 420px at 18% 0%,rgba(67,184,193,.14),transparent 70%)}
+.hero h1{font-size:clamp(2.2rem,5.4vw,3.8rem);margin-bottom:18px}
+.hero .lede{font-size:clamp(1.1rem,2vw,1.35rem);color:var(--fg);max-width:34ch}
+.weeks{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;margin-top:34px;max-width:420px}
+.weeks i{height:4px;border-radius:2px;background:var(--line)}
+.weeks i.on{background:var(--accent)}
+.wlabel{display:flex;justify-content:space-between;max-width:420px;margin-top:8px;font:500 .68rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.hero .intro{margin-top:28px;max-width:52ch;color:var(--muted)}
+footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="lang" role="group" aria-label="Language"><a href="/clarity-protocol/onboarding/" lang="en" hreflang="en" data-lang="en" aria-current="true">EN</a><a href="/de/clarity-protocol/onboarding/" lang="de" hreflang="de" data-lang="de">DE</a></div>
+  <div class="wrap">
+    <span class="eyebrow">Clarity Protocol</span>
+    <h1>How the Clarity Protocol works.</h1>
+    <p class="lede">12 weeks. Finally a plan that truly fits your body and your goals.</p>
+    <div class="weeks" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="wlabel" aria-hidden="true"><span>Week 1</span><span>Week 12</span></div>
+    <p class="intro">We recommend reading this page through once. It gives you an overview of the process. Then you start with the essential: the questionnaire.</p>
+  </div>
+</section>
+
+<main>
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Your questionnaire</span>
+  <h2>The starting point for everything else.</h2>
+  <p>This is where we learn where you stand and what you want to achieve. In the questionnaire we also ask whether you would like a fresh blood test. We recommend it, but it is not required.</p>
+  <svg class="flow" viewBox="0 0 800 130" role="img" aria-label="Questionnaire, then Quick Wins and biomarker selection, then roadmap">
+    <g font-family="Raleway,sans-serif" font-size="17" text-anchor="middle">
+      <rect x="4" y="25" width="220" height="80" rx="16" fill="#10272B" stroke="#43B8C1" stroke-width="1.5"/><text x="114" y="71" fill="#E7EEEB">Questionnaire</text>
+      <rect x="290" y="25" width="220" height="80" rx="16" fill="#10272B" stroke="#43B8C1" stroke-width="1.5"/><text x="400" y="62" fill="#E7EEEB">Quick Wins &amp;</text><text x="400" y="84" fill="#E7EEEB">Biomarker selection</text>
+      <rect x="576" y="25" width="220" height="80" rx="16" fill="#43B8C1"/><text x="686" y="71" fill="#04181B" font-weight="600">Roadmap</text>
+      <g stroke="#43B8C1" stroke-width="2" fill="none"><path d="M232 65h50M274 57l8 8-8 8"/><path d="M518 65h50M560 57l8 8-8 8"/></g>
+    </g>
+  </svg>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2>Individual depth in the questionnaire.</h2>
+  <div class="levels">
+    <div class="lvl"><i>1</i><div><b>Minimum</b><br>The mandatory part of the questionnaire. You can start with that.</div></div>
+    <div class="lvl"><i>2</i><div><b>Recommended</b><br>Plus the detailed questionnaire (10 to 20 min).</div></div>
+    <div class="lvl"><i>3</i><div><b>Optimal</b><br>Plus current blood values and VO2max.</div></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Your first week</span>
+  <h2>A clear start.</h2>
+  <div class="days">
+    <div class="day"><b>Day 1</b><div>Start, questionnaire and overview</div></div>
+    <div class="day"><b>Day 2</b><div>The supplement reset begins</div></div>
+    <div class="day"><b>Day 3 to 7</b><div><strong>Your first Quick Wins.</strong> You don't have to wait for the analysis. Your questionnaire often already reveals first personal starting points. You'll get a few carefully chosen measures you can start right away, for example for energy, sleep or digestion. That way you get into action immediately, without being overwhelmed by ten changes at once.</div></div>
+  </div>
+  <p>In week 1 we only need the questionnaire from you. You implement your Quick Wins at your own pace.</p>
+  <div class="note"><em>Optional:</em> You can send us existing blood tests and health data at any time, via WhatsApp to <a href="https://wa.me/4916090255862">+49 160 902 558 62</a> or by email to <a href="mailto:info@lukasheck.com">info@lukasheck.com</a>.</div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">The small supplement reset</span>
+  <h2>Your fresh start in week 1.</h2>
+  <p>To begin, you take a one-week break from your supplements. This gives you:</p>
+  <ul class="tick">
+    <li>A clear starting point for everything that follows</li>
+    <li>A breather for your body. It may help to relieve your liver and gut.</li>
+    <li>More reliable blood values, for example without distortion from biotin</li>
+    <li>A better overview of what you really need. This can save effort and money.</li>
+    <li>A targeted fresh start, after which you bring products back step by step</li>
+  </ul>
+  <div class="card">
+    <h3 style="font-size:1.1rem;font-weight:600;margin-bottom:6px">It's that simple</h3>
+    <ol class="steps">
+      <li>One week off all supplements, except omega-3. It starts on day 2.</li>
+      <li>Afterwards, if you like, you get a fresh blood test.</li>
+      <li>Then you bring your products back step by step.</li>
+    </ol>
+  </div>
+  <div class="note"><em>If you are already a client and current blood values are available:</em> 3 days without supplements before the blood draw are enough, omega-3 excepted.</div>
+  <p class="muted" style="margin-top:16px">Of course, you keep taking medication and anything prescribed by a doctor.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Your roadmap in 12 weeks</span>
+  <h2>What happens when.</h2>
+  <div class="days">
+    <div class="week"><b>Week 1</b><div>Start, supplement reset and Quick Wins. Optional: send existing blood tests and biomarkers and get a fresh blood test at the end of the reset.</div></div>
+    <div class="week"><b>Week 2–3</b><div>Analysis of all your data and values</div></div>
+    <div class="week"><b>Week 4</b><div>Your personal roadmap with clear priorities, specific products, dosages, intake times and a shopping list. You understand what you are doing, why you are doing it and how we recognise progress.</div></div>
+    <div class="week"><b>Week 5–12</b><div>Implementing your roadmap, with a check-in at the halfway point</div></div>
+    <div class="week"><b>Week 12</b><div>Your review. If suitable biomarkers were collected, a new measurement shows objective changes. We also look at energy, sleep, digestion and your personal goals. Afterwards: Clarity Vertiefung (Deepening) or Clarity Kompass (Compass).</div></div>
+  </div>
+  <p class="muted">Your plan stays flexible. Since Clarity is individual coaching, we adjust it at any time when something changes for you.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Your fresh blood draw</span>
+  <h2>So everything goes smoothly.</h2>
+  <div class="card"><ul class="tick" style="margin:0">
+    <li><b>Time:</b> ideally between 6 and 10 am, by 12 noon at the latest</li>
+    <li><b>Medication:</b> keep taking as prescribed</li>
+    <li><b>Infection:</b> better to cancel the appointment</li>
+    <li><b>72 hours before:</b> no biotin, no flights</li>
+    <li><b>48 hours before:</b> no hard training</li>
+    <li><b>24 hours before:</b> no supplements (omega-3 excepted), no alcohol, no training</li>
+    <li><b>12 hours before:</b> stay fasted</li>
+    <li><b>In the morning:</b> 300 to 400 ml of water, no coffee, no tea, no caffeine</li>
+  </ul></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Results count</span>
+  <h2>Not as many measures as possible. The right ones.</h2>
+  <p>The heart of Clarity is your individual roadmap with supplements that fit your body and your data. We focus on the levers that matter most for your well-being and performance. Not only biomarkers count, but also how you actually feel.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">How your plan comes about</span>
+  <h2>Four perspectives, one sweet spot.</h2>
+  <svg class="sweet" viewBox="0 0 700 520" role="img" aria-label="Four overlapping circles: Science, expert network, coaching experience, your real life. In the centre the Clarity sweet spot.">
+    <g font-family="Raleway,sans-serif" font-size="17" text-anchor="middle" fill="#E7EEEB">
+      <circle cx="280" cy="190" r="140" fill="#43B8C1" fill-opacity=".28" stroke="#43B8C1"/>
+      <circle cx="420" cy="190" r="140" fill="#43B8C1" fill-opacity=".28" stroke="#43B8C1"/>
+      <circle cx="280" cy="330" r="140" fill="#CDAA6E" fill-opacity=".26" stroke="#CDAA6E"/>
+      <circle cx="420" cy="330" r="140" fill="#CDAA6E" fill-opacity=".26" stroke="#CDAA6E"/>
+      <text x="215" y="130">Science</text>
+      <text x="485" y="122">Expert</text><text x="485" y="144">network</text>
+      <text x="215" y="392">Coaching</text><text x="215" y="414">experience</text>
+      <text x="485" y="392">Your real</text><text x="485" y="414">life</text>
+      <circle cx="350" cy="260" r="62" fill="#0A191C" stroke="#E7EEEB" stroke-opacity=".5"/>
+      <text x="350" y="256" font-weight="600">CLARITY</text><text x="350" y="278" font-weight="600">Sweet Spot</text>
+    </g>
+  </svg>
+  <div class="pillars">
+    <div class="card"><h3>Science</h3><p class="muted">Scientific evidence is the most important foundation.</p></div>
+    <div class="card"><h3>Expert network</h3><p class="muted">Exchange with specialists sharpens every recommendation.</p></div>
+    <div class="card"><h3>Coaching experience</h3><p class="muted">You benefit from over a decade of practical experience from Lukas Heck, health and performance trainer and specialist in well-being and performance.</p></div>
+    <div class="card"><h3>Your real life</h3><p class="muted">Your goals, your daily life, your intuition and data.</p></div>
+  </div>
+  <p class="muted">We also use AI-assisted tools for the analysis.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Your customer service</span>
+  <h2>Your questions, around the clock.</h2>
+  <p>Throughout the program you can message us on WhatsApp: <a href="https://wa.me/4916090255862">+49 160 902 558 62</a>. Simply collect your notes and questions there.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Your satisfaction guarantee</span>
+  <p class="sub">Not satisfied in the end, or nothing has changed for you? Then we don't want to keep your money either. Just send us a short email after week 12 at <a href="mailto:info@lukasheck.com">info@lukasheck.com</a>.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Get started</span>
+  <h2>Welcome aboard.</h2>
+  <p>To start, we need at least the mandatory part of the questionnaire (approx. 5 min). The more you fill in and the more data you send us, the more precise your roadmap becomes.</p>
+  <p style="margin:22px 0 22px" class="muted">We look forward to getting started.</p>
+  <a class="btn" href="#fragebogen-link">Start the questionnaire now</a>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="eyebrow">Frequently asked questions</span>
+  <details><summary>Do I have to get a blood test?</summary><p>No. It is recommended but optional. You can start with the mandatory part.</p></details>
+  <details><summary>How do I send existing blood values?</summary><p>Via WhatsApp to +49 160 902 558 62 or by email to info@lukasheck.com, as a photo, PDF or screenshot. Older values are welcome too.</p></details>
+  <details><summary>What costs extra?</summary><p>Supplements and laboratory tests are not included in the price.</p></details>
+  <details><summary>How long does the questionnaire take?</summary><p>Mandatory part approx. 5 minutes, detailed part 10 to 20 minutes. You can pause at any time.</p></details>
+  <details><summary>Does this replace medical advice?</summary><p>No. For complaints, pre-existing conditions or medication, please speak with your doctor.</p></details>
+</div></section>
+</main>
+
+<footer><div class="wrap">© Lukas Heck</div></footer>
+<script>
+document.querySelectorAll('.lang a').forEach(function(a){a.addEventListener('click',function(){try{document.cookie='lang='+a.getAttribute('data-lang')+'; path=/; max-age=31536000; SameSite=Lax'}catch(e){}})});
+</script>
+</body>
+</html>
