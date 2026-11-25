@@ -155,6 +155,148 @@
       ],
       "destination": "/de/clarity-protocol/onboarding/",
       "permanent": false
+    },
+    {
+      "source": "/bulletproof-gut",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "lang",
+          "value": "de"
+        }
+      ],
+      "destination": "/de/bulletproof-gut/",
+      "permanent": false
+    },
+    {
+      "source": "/bulletproof-gut",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^de.*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "lang"
+        }
+      ],
+      "destination": "/de/bulletproof-gut/",
+      "permanent": false
+    },
+    {
+      "source": "/bulletproof-gut",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "^(DE|AT|CH)$"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "lang"
+        },
+        {
+          "type": "header",
+          "key": "accept-language"
+        }
+      ],
+      "destination": "/de/bulletproof-gut/",
+      "permanent": false
+    },
+    {
+      "source": "/bulletproof-gut/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "lang",
+          "value": "de"
+        }
+      ],
+      "destination": "/de/bulletproof-gut/",
+      "permanent": false
+    },
+    {
+      "source": "/bulletproof-gut/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^de.*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "lang"
+        }
+      ],
+      "destination": "/de/bulletproof-gut/",
+      "permanent": false
+    },
+    {
+      "source": "/bulletproof-gut/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "^(DE|AT|CH)$"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "lang"
+        },
+        {
+          "type": "header",
+          "key": "accept-language"
+        }
+      ],
+      "destination": "/de/bulletproof-gut/",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/bulletproof-gut/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
+    },
+    {
+      "source": "/bulletproof-gut",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
+    },
+    {
+      "source": "/de/bulletproof-gut/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
+    },
+    {
+      "source": "/de/bulletproof-gut",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
     }
   ]
 }
