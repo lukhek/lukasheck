@@ -77,7 +77,6 @@ ul.tick li:before{content:"";position:absolute;left:4px;top:.6em;width:10px;heig
 .hero .lede{font-size:clamp(1.15rem,2.2vw,1.45rem);max-width:30ch}
 .hero .intro{margin-top:26px;max-width:54ch;color:var(--muted)}
 .pill{display:inline-block;margin-top:26px;font:500 .72rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:8px 12px}
-.reassure{margin-top:30px}
 .goals{margin-top:34px;padding:22px 24px;background:var(--surface);border:1px solid var(--line);border-radius:16px}
 .goals .eyebrow{margin-bottom:8px}
 .goals ul{margin:6px 0 0;columns:2;column-gap:30px}
@@ -96,23 +95,29 @@ summary:focus-visible,.btn:focus-visible,input:focus-visible{outline:2px solid v
 .ans{color:var(--muted);margin-top:12px}
 .ans b{color:var(--fg)}
 .ans p+p{margin-top:10px}
-/* level slider */
-.lv{margin:26px 0 8px;display:grid;grid-template-columns:auto 1fr;gap:20px 24px;align-items:center}
-.lv-num{font:500 2.2rem/1 var(--mono);width:84px;height:84px;border-radius:50%;border:1.5px solid var(--accent);display:grid;place-items:center;color:var(--accent);background:var(--accent-soft)}
-.lv-lab{font-weight:600}
-.lv input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:12px;border-radius:6px;margin:16px 0 8px;background:linear-gradient(to right,var(--accent) 0 27.7%,#2E8E96 27.7% 61.1%,var(--warm) 61.1% 100%)}
-.lv input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:var(--fg);border:5px solid var(--bg);box-shadow:0 0 0 2px var(--fg);cursor:grab}
-.lv input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--fg);border:5px solid var(--bg);box-shadow:0 0 0 2px var(--fg);cursor:grab}
-.lv-ph{display:flex;font:500 .64rem/1.2 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
-.lv-ph span{display:block;transition:color .2s}
-.lv-ph span:nth-child(1){width:27.7%}.lv-ph span:nth-child(2){width:33.4%}.lv-ph span:nth-child(3){width:38.9%}
-.lv-ph span.on{color:var(--fg)}
-@media(max-width:560px){.lv-ph{font-size:.56rem;letter-spacing:0}.lv-ph span{white-space:nowrap;padding-right:6px}}
-.lv-out span{display:block;color:var(--muted);margin-top:10px;font-size:1rem}
-.lv-out{grid-column:1/-1;padding:18px 20px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
-.lv-out small{display:block;font:500 .7rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-.lv-out strong{font-weight:500;font-size:1.25rem;display:block}
-@media(max-width:560px){.lv{grid-template-columns:1fr}.lv-num{width:64px;height:64px;font-size:1.6rem}}
+/* faktoren */
+.mf{margin:30px 0 6px}
+.mf-hub{display:flex;flex-direction:column;align-items:center}
+.mf-hub span{padding:13px 30px;border:1.5px solid var(--accent);border-radius:999px;background:var(--accent-soft);font-weight:600;letter-spacing:-.01em}
+.mf-hub:after{content:"";width:2px;height:22px;background:rgba(67,184,193,.45)}
+.mf-grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding-top:22px}
+.mf-grid:before{content:"";position:absolute;top:0;left:12.5%;right:12.5%;height:2px;background:rgba(67,184,193,.45)}
+.mf-t{position:relative;font:600 .98rem/1.25 var(--font);color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:15px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;text-align:left;min-height:58px;transition:border-color .2s,background .2s}
+.mf-t:before{content:"";position:absolute;top:-22px;left:50%;width:2px;height:22px;background:rgba(67,184,193,.45)}
+.mf-t:nth-child(n+5):before{display:none}
+.mf-t:hover{border-color:var(--accent)}
+.mf-t[aria-expanded=true]{border-color:var(--accent);background:var(--accent-soft)}
+.mf-t i{font-style:normal;color:var(--accent);font-size:1.3rem;line-height:1;flex:none}
+.mf-t:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.mf-hint{text-align:center;font:500 .7rem/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:14px}
+.mf-panel{margin-top:14px;padding:18px 20px;background:var(--surface);border:1px solid var(--accent);border-radius:14px}
+.mf-panel h3{color:var(--accent);margin-bottom:6px}
+.mf-panel p{color:var(--fg)}
+@media(max-width:700px){.mf-grid{grid-template-columns:1fr 1fr;padding-top:14px}.mf-grid:before,.mf-t:before{display:none}.mf-hub:after{height:14px}}
+.sur{margin:26px 0 22px}
+.sur p b{color:var(--fg)}
+.forms{margin:6px 0 0}
+.ov{margin:22px 0}
 /* myths */
 .myths{margin:26px 0}
 .myth{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;padding:16px 0;border-bottom:1px solid var(--line)}
@@ -138,13 +143,6 @@ summary:focus-visible,.btn:focus-visible,input:focus-visible{outline:2px solid v
 .pr code{display:block;font:400 .86rem/1.6 var(--mono);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;white-space:pre-wrap;word-break:break-word}
 .cp{font:600 .8rem/1 var(--font);color:var(--accent);background:transparent;border:1px solid var(--accent);border-radius:999px;padding:9px 14px;cursor:pointer;white-space:nowrap;min-height:38px;transition:background .2s,color .2s}
 .cp:hover,.cp.ok{background:var(--accent);color:var(--on-accent)}
-/* phases */
-.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px 0}
-.ph{border-top:3px solid var(--line);padding-top:14px}
-.ph:nth-child(1){border-color:var(--accent)}.ph:nth-child(2){border-color:#2E8E96}.ph:nth-child(3){border-color:var(--warm)}
-.ph small{font:500 .7rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
-.ph b{font-size:1.25rem;font-weight:500;display:block;margin-bottom:4px}
-@media(max-width:620px){.phases{grid-template-columns:1fr}}
 .chips{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin:20px 0}
 .chips div{padding:12px 0;border-bottom:1px solid var(--line);font-size:.97rem;color:var(--muted)}
 .chips b{display:block;color:var(--accent);font:500 .7rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
@@ -160,18 +158,6 @@ summary:focus-visible,.btn:focus-visible,input:focus-visible{outline:2px solid v
 .leg i.n{background:#2F5453}
 @media(max-width:620px){.clockrow{grid-template-columns:1fr;justify-items:center}.clockrow svg{max-width:240px}}
 .motto{font-size:clamp(1.3rem,2.6vw,1.7rem);margin:28px 0 8px;color:var(--accent)}
-/* checklist */
-.cl{list-style:none;padding:0;margin:20px 0}
-.cl label{display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start;padding:13px 0;border-bottom:1px solid var(--line);cursor:pointer}
-.cl input{appearance:none;-webkit-appearance:none;width:24px;height:24px;border:1.5px solid var(--muted);border-radius:7px;background:transparent;margin:0;cursor:pointer;display:grid;place-items:center;transition:background .15s,border-color .15s}
-.cl input:checked{background:var(--accent);border-color:var(--accent)}
-.cl input:checked:after{content:"";width:11px;height:6px;border-left:2.5px solid var(--on-accent);border-bottom:2.5px solid var(--on-accent);transform:rotate(-45deg) translate(1px,-1px)}
-.cl input:checked+span{color:var(--muted)}
-.score{display:flex;align-items:center;gap:16px;margin-top:6px}
-.bar{flex:1;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
-.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
-.score b{font:500 .95rem/1 var(--mono);color:var(--accent);white-space:nowrap}
-.lnk{background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;font:inherit;font-size:.9rem;padding:6px 0;margin-top:8px}
 .quote{font-size:clamp(1.5rem,3.4vw,2.3rem);line-height:1.2;letter-spacing:-.02em;margin:34px 0 8px;text-wrap:balance}
 .disc{font-size:.88rem;color:var(--muted);margin-top:30px}
 footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
@@ -182,7 +168,7 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 <body>
 <header class="nav"><div class="wrap">
 <div class="lang" role="group" aria-label="Sprache"><a href="/bulletproof-gut/" lang="en" hreflang="en" data-lang="en" aria-label="English"><svg class="flag" viewBox="0 0 60 30" width="18" height="12" aria-hidden="true"><clipPath id="fs"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="ft"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#fs)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#ft)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg><span class="lt">EN</span></a><a href="/de/bulletproof-gut/" lang="de" hreflang="de" data-lang="de" aria-label="Deutsch" aria-current="true"><svg class="flag" viewBox="0 0 5 3" width="18" height="12" aria-hidden="true"><rect width="5" height="3" fill="#FFCE00"/><rect width="5" height="2" fill="#DD0000"/><rect width="5" height="1" fill="#000"/></svg><span class="lt">DE</span></a></div>
-<nav class="links" aria-label="Hauptnavigation"><a href="#verstehen">Verstehen</a><a href="#niveau">Darmniveau</a><a href="#mythen">Mythen</a><a href="#essen">Essen</a><a href="#rhythmus">Rhythmus</a><a href="#checkliste">Checkliste</a></nav>
+<nav class="links" aria-label="Hauptnavigation"><a href="#verstehen">Verstehen</a><a href="#mythen">Mythen</a><a href="#essen">Ernährung</a><a href="#rhythmus">Rhythmus</a><a href="#ueberblick">Überblick</a></nav>
 </div></header>
 
 <section class="hero"><div class="wrap">
@@ -192,33 +178,20 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 <p class="intro">Das Ziel ist nicht, ein Leben lang Darmprobleme zu managen. Das Ziel ist ein Darm, der sich möglichst gut selbst regulieren kann. Lies diese Seite einmal in Ruhe durch. Danach weißt du, wie wir das Thema angehen und warum.</p>
 <span class="pill">ca. 8 Min. Lesezeit</span>
 <div class="goals"><span class="eyebrow">Das Ziel: ein Bulletproof Gut</span><ul class="tick"><li class="">Ein stabiles mikrobielles Gleichgewicht</li><li class="">Eine funktionierende Darmbarriere</li><li class="dx">Eine leistungsfähige körpereigene Abwehr</li><li class="dx">Gute Regenerationsfähigkeit</li><li class="">Zuverlässige Verdauung</li><li class="">Hohe individuelle Verträglichkeit</li><li class="">Möglichst viel Freiheit im Alltag</li></ul></div>
-<div class="note reassure"><b>Du bist hier richtig.</b> Du musst nicht alles auf einmal umsetzen und nichts dauerhaft streichen. Wir gehen es Schritt für Schritt an: erst verstehen, dann gezielt ausprobieren, dann wieder Freiheit gewinnen.</div>
 </div></section>
 
 <main>
 <section class="sec" id="verstehen"><div class="wrap">
 <span class="eyebrow">Das Fundament</span>
 <h2>Darmgesundheit hat viele Stellschrauben.</h2>
-<p>Zwei Menschen können nahezu dieselben Beschwerden haben und trotzdem völlig unterschiedliche Ursachen. Was der einen hilft, zum Beispiel mehr Ballaststoffe, kann bei der anderen alles verschlimmern. Deshalb gibt es keinen Standardplan. Wir schauen genau hin, beobachten deine Reaktionen und justieren nach.</p>
-<div class="pipe" role="group" aria-label="Verdauungsweg von Magen über Dünndarm zu Dickdarm, darunter Darmbarriere, Immunsystem und Darm-Hirn-Achse"><div class="row"><div class="st"><b>Magen</b><span>Magensäure · Eiweiß</span></div><div class="ar" aria-hidden="true">&rarr;</div><div class="st"><b>Dünndarm</b><span>Galle · Enzyme · Paneth-Zellen</span></div><div class="ar" aria-hidden="true">&rarr;</div><div class="st"><b>Dickdarm</b><span>Mikrobiom · Butyrat</span></div></div><div class="bar2">Darmbarriere · Immunsystem · Darm-Hirn-Achse</div></div>
-<p class="cap dx">Gute Verdauung beginnt schon vor dem Darm. Der gesamte Verdauungstrakt ist ein zusammenhängendes System.</p>
-<details class=""><summary><span><em class="tag">Deep Dive</em>Schutz- und Reparaturmechanismen</span></summary><div class="ans"><div class="tl"><div><b>Intestinale Stammzellen</b> ermöglichen die ständige Erneuerung der Darmschleimhaut. Viele Darmepithelzellen werden innerhalb weniger Tage ersetzt.</div><div><b>Paneth-Zellen</b> bilden körpereigene antimikrobielle Substanzen und helfen, das mikrobielle Gleichgewicht im Dünndarm zu regulieren.</div><div><b>Darmbarriere</b> reguliert, welche Stoffe aufgenommen werden und welche draußen bleiben.</div></div><p>Das alles arbeitet eng mit dem Immunsystem zusammen. Alkohol, chronische Entzündungen, Mangelernährung und übermäßige Belastung können es beeinträchtigen.</p></div></details><details class=""><summary><span><em class="tag">Deep Dive</em>Butyrat und Co.: was Darmbakterien für uns herstellen</span></summary><div class="ans"><p>Darmbakterien bilden kurzkettige Fettsäuren wie Butyrat, Acetat und Propionat, unter anderem bei der Fermentation bestimmter Ballaststoffe. Butyrat ist eine wichtige Energiequelle für die Zellen der Dickdarmschleimhaut und unterstützt Darmbarriere und Immunregulation. Deshalb ist langfristig eine vielfältige, individuell verträgliche Ernährung das Ziel. Bei niedrigem Darmniveau kann es sinnvoll sein, bestimmte fermentierbare Lebensmittel vorübergehend zu reduzieren, um sie später wieder einzuführen.</p></div></details><details class="dx"><summary><span><em class="tag">Deep Dive</em>Baumaterial: Protein und Aminosäuren</span></summary><div class="ans"><p>Für Reparatur und Erneuerung braucht der Darm genug Energie, Protein und Aminosäuren. Glutamin liefert Energie für bestimmte Darm- und Immunzellen, Glycin und Prolin sind Bausteine von Kollagen und Bindegewebe, Cystein ist Ausgangsstoff für das Antioxidans Glutathion. Tierische Lebensmittel machen die Versorgung oft unkompliziert, eine gut geplante pflanzliche Ernährung kann den Bedarf aber ebenfalls decken. Entscheidend ist eine ausreichende und verträgliche Versorgung, nicht die Ernährungsphilosophie.</p></div></details>
-</div></section>
-
-<section class="sec" id="niveau"><div class="wrap">
-<span class="eyebrow">Dein Darmniveau</span>
-<h2>Wo stehst du gerade?</h2>
-<p class="lead">Die beste Ernährung ist die, die zu dir passt. Einschränkung ist ein Werkzeug auf Zeit, kein Dauerzustand.</p>
-<p class="muted">Schätze auf einer Skala von 1 bis 10 ein, wie es deiner Verdauung gerade geht. Denk an Blähungen, Stuhlkonsistenz, Regelmäßigkeit, Bauchschmerzen und Verträglichkeit. Schieb den Regler und sieh, was das für deinen Alltag heißt.</p>
-<div class="lv">
-<div class="lv-num" id="lvl-n" aria-hidden="true">5</div>
-<div><label class="lv-lab" for="lvl">Wie bewertest du aktuell deine Darmgesundheit?</label>
-<input type="range" id="lvl" min="1" max="10" step="1" value="5">
-<div class="lv-ph" aria-hidden="true"><span>Stabilisieren</span><span>Aufbauen</span><span>Erweitern</span></div></div>
-<div class="lv-out" aria-live="polite"><small id="lvl-p"></small><strong id="lvl-o"></strong><span id="lvl-d"></span></div>
+<p>Zwei Menschen können nahezu dieselben Beschwerden haben und trotzdem völlig unterschiedliche Ursachen. Deshalb gibt es keinen Standardplan. Wir schauen genau hin, beobachten deine Reaktionen und justieren nach.</p>
+<div class="mf" role="group" aria-label="Dein Darm im Zentrum, beeinflusst von Ernährung, Lebensstil, Genetik, Vorerkrankungen, Nervensystem, Psyche, Mikrobiom und Verdauung">
+<div class="mf-hub"><span>Dein Darm</span></div>
+<div class="mf-grid"><button type="button" class="mf-t" aria-expanded="false"><span>Ernährung</span><i aria-hidden="true">+</i></button><button type="button" class="mf-t" aria-expanded="false"><span>Lebensstil</span><i aria-hidden="true">+</i></button><button type="button" class="mf-t" aria-expanded="false"><span>Genetik</span><i aria-hidden="true">+</i></button><button type="button" class="mf-t" aria-expanded="false"><span>Vorerkrankungen</span><i aria-hidden="true">+</i></button><button type="button" class="mf-t" aria-expanded="false"><span>Nervensystem</span><i aria-hidden="true">+</i></button><button type="button" class="mf-t" aria-expanded="false"><span>Psyche</span><i aria-hidden="true">+</i></button><button type="button" class="mf-t" aria-expanded="false"><span>Mikrobiom</span><i aria-hidden="true">+</i></button><button type="button" class="mf-t" aria-expanded="false"><span>Verdauung</span><i aria-hidden="true">+</i></button></div>
+<p class="mf-hint">Tippe auf einen Faktor, um mehr zu erfahren.</p>
+<div class="mf-panel" id="mfp" aria-live="polite" hidden><h3 id="mfp-t"></h3><p id="mfp-p"></p></div>
 </div>
-<script type="application/json" id="lvl-data">{"levels": [[1, 3, 0, "Stabilisieren und Belastungen gezielt reduzieren", "Im Alltag: Auslöser gezielt reduzieren und bei der Ernährung genauer hinschauen. Einfach, gekocht, gut verträglich."], [4, 6, 1, "Individuelle Verträglichkeit verbessern", "Im Alltag: Lebensmittel einzeln testen und Schritt für Schritt wieder aufnehmen, was du gut verträgst."], [7, 8, 2, "Vielfalt und Belastbarkeit ausbauen", "Im Alltag: Die Ernährung wird spürbar freier. Du baust Vielfalt auf und testest, wie viel dein Darm aushält."], [9, 10, 2, "Gesundheit erhalten und flexibel leben", "Im Alltag: Du lebst flexibel. Ausnahmen und Abweichungen sind kein Problem mehr."]], "phases": ["Stabilisieren", "Aufbauen", "Erweitern"], "word": "Phase"}</script>
-<p class="muted" style="margin-top:20px">Das Darmniveau ist ein einfaches, subjektives Werkzeug, um möglichst schnell und praktisch beschwerdefreier zu werden. Es ist kein medizinisch validiertes Diagnoseinstrument.</p>
+<script type="application/json" id="mf-data">[["Ernährung", "Was du isst, wie viel, roh oder gekocht und in welcher Kombination. Dieselben Lebensmittel wirken bei jedem Menschen anders."], ["Lebensstil", "Schlaf, Bewegung, Alkohol, Essrhythmus und Erholung beeinflussen Darmbewegung, Schleimhaut und Abwehr."], ["Genetik", "Genetische Unterschiede können beeinflussen, wie du Nahrung verdaust und welche Lebensmittel du gut verträgst."], ["Vorerkrankungen", "Frühere Infektionen, Entzündungen, Erkrankungen und Medikamente können Darm und Mikrobiom nachhaltig prägen."], ["Nervensystem", "Darm und Gehirn sprechen ständig miteinander. Stress kann Darmbewegung, Schmerzempfindlichkeit und Verdauung verändern."], ["Psyche", "Anspannung, Sorgen, Überforderung und auch anhaltende Einsamkeit können über die Darm-Hirn-Achse auf die Verdauung wirken."], ["Mikrobiom", "Entscheidend ist nicht nur, welche Bakterien da sind, sondern was sie herstellen. Butyrat zum Beispiel nährt die Schleimhaut und stärkt die Darmbarriere."], ["Verdauung", "Magensäure, Galle und Enzyme bereiten alles vor. Funktionieren sie nicht gut, verändert sich auch das Milieu im Darm."]]</script>
 </div></section>
 
 <section class="sec" id="mythen"><div class="wrap">
@@ -229,13 +202,11 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 </div></section>
 
 <section class="sec" id="essen"><div class="wrap">
-<span class="eyebrow">Ernährung praktisch</span>
-<h2>Gesund heißt nicht automatisch gut verträglich.</h2>
-<p class="lead">Ein Beispiel, das viele überrascht: <b>Karotte, Kiwi und Orange</b> werden von vielen Menschen mit empfindlichem Darm deutlich besser vertragen als zum Beispiel <b>Brombeeren oder Äpfel</b>, obwohl alle gleichermaßen „gesund“ sind.</p>
-<p class="muted dx">Der Grund sind sogenannte <b>FODMAPs</b>: bestimmte kurzkettige Kohlenhydrate und Zuckeralkohole, die schlecht aufgenommen und von Darmbakterien vergoren werden. Bei empfindlichen Menschen kann das zu Blähungen, Bauchschmerzen oder Durchfall beitragen. Eine Low-FODMAP-Ernährung ist vor allem beim Reizdarmsyndrom gut untersucht. Auch bei SIBO kann sie die Beschwerden lindern, beseitigt aber nicht nachweislich die Überwucherung selbst.</p>
-<div class="fod"><div class="fr head"><div>Kategorie</div><div class="lo">Häufig besser verträglich</div><div class="hi">Häufig stärker fermentierbar</div></div><div class="fr"><div class="c">Gemüse</div><div class="lo" data-l="Häufig besser verträglich">Karotten, Gurken, Zucchini, Auberginen</div><div class="hi" data-l="Häufig stärker fermentierbar">Zwiebeln, Knoblauch, Blumenkohl, Artischocken</div></div><div class="fr"><div class="c">Obst</div><div class="lo" data-l="Häufig besser verträglich">Kiwi, Erdbeeren, Orangen, Ananas</div><div class="hi" data-l="Häufig stärker fermentierbar">Äpfel, Birnen, Mango, Wassermelone, Brombeeren</div></div><div class="fr"><div class="c">Kohlenhydrate</div><div class="lo" data-l="Häufig besser verträglich">Reis, Kartoffeln, Buchweizen</div><div class="hi" data-l="Häufig stärker fermentierbar">Viele Weizen- und Roggenprodukte</div></div><div class="fr dx"><div class="c">Hülsenfrüchte</div><div class="lo" data-l="Häufig besser verträglich">Kleine Mengen bestimmter Konserven</div><div class="hi" data-l="Häufig stärker fermentierbar">Größere Mengen Bohnen und Linsen</div></div><div class="fr dx"><div class="c">Milchprodukte</div><div class="lo" data-l="Häufig besser verträglich">Laktosefreie Milch, Hartkäse</div><div class="hi" data-l="Häufig stärker fermentierbar">Herkömmliche Milch, laktosereicher Joghurt</div></div><div class="fr dx"><div class="c">Süßungsmittel</div><div class="lo" data-l="Häufig besser verträglich">Haushaltszucker, Ahornsirup in Maßen</div><div class="hi" data-l="Häufig stärker fermentierbar">Sorbit, Xylit, Honig</div></div><div class="fr"><div class="c">Protein</div><div class="lo" data-l="Häufig besser verträglich">Eier, Fisch, naturbelassenes Fleisch, fester Tofu</div><div class="hi" data-l="Häufig stärker fermentierbar">Marinierte Produkte mit Zwiebeln oder Knoblauch</div></div></div>
-<p class="cap dx" style="margin-top:10px">Das ist eine Orientierung, keine feste Regel. Verträglichkeit ist individuell und hängt von der Portionsgröße ab.</p>
-<div class="grid3"><div class="card"><h3>Die Menge macht den Unterschied.</h3><p>Ein Lebensmittel kann in normaler Portion gut verträglich sein und in sehr großer Menge Beschwerden machen. Mehrere einzeln verträgliche Lebensmittel können zusammen zu viel werden. Das nennt man FODMAP Stacking.</p></div><div class="card dx"><h3>Ein Werkzeug auf Zeit.</h3><p>Eine strengere Low-FODMAP-Phase ist zeitlich begrenzt. Üblicherweise folgt nach zwei bis sechs Wochen eine strukturierte Wiedereinführung.</p></div><div class="card"><h3>Gekocht statt roh.</h3><p>Kochen, Dünsten und Schmoren machen Lebensmittel oft leichter verdaulich. Vorübergehend können auch weißer Reis oder helles Sauerteigbrot sinnvoller sein als viel Vollkorn. Die langfristigen Vorteile von Vollkorn bleiben dabei bestehen.</p></div></div>
+<span class="eyebrow">Ernährung</span>
+<h2>Ernährung ist mehr als Makros und Darm.</h2>
+<p class="lead">Ernährung ist individuell und immer mehr als Makros und Darm. Sie ist auch Genuss, Gesellschaft und Gelüste. Deshalb findest du hier eine Sammlung von Ernährungsmaßnahmen und Philosophien, die wir nutzen können, um deinen Darm zu unterstützen. Einschränkung ist dabei ein Werkzeug auf Zeit, kein Dauerzustand.</p>
+<div class="card sur"><h3>Gesund heißt nicht automatisch gut verträglich.</h3><p>Ein Beispiel, das viele überrascht: <b>Karotte, Kiwi und Orange</b> werden von vielen Menschen mit empfindlichem Darm deutlich besser vertragen als zum Beispiel <b>Brombeeren oder Äpfel</b>, obwohl alle gleichermaßen „gesund“ sind.</p></div>
+<div class="forms"><details class=""><summary><span><em class="tag">Langfristig</em>Mediterran</span></summary><div class="ans"><p>Gut untersuchte Ernährungsweise mit pflanzlicher Vielfalt, Olivenöl, Fisch und nährstoffreichen Lebensmitteln.</p></div></details><details class=""><summary><span><em class="tag">Orientierung</em>Paleo-orientiert</span></summary><div class="ans"><p>Kann helfen, die Ernährung zu vereinfachen und Hochverarbeitetes zu reduzieren.</p></div></details><details class=""><summary><span><em class="tag">Grundhaltung</em>Paleo-mediterran</span></summary><div class="ans"><p>Als Orientierung eignet sich eine flexible Mischung aus Paleo und mediterraner Ernährung: nährstoffreich, überwiegend wenig verarbeitet und individuell anpassbar. Bewusst nicht streng. Reis, Buchweizen, Milchprodukte oder Hülsenfrüchte dürfen ihren Platz haben, und Süßes ab und zu auch.</p><div class="chips"><div class=""><b>Protein</b>Fisch, Eier, Fleisch, Meeresfrüchte, verträgliche pflanzliche Quellen</div><div class=""><b>Gemüse</b>Karotten, Zucchini, Auberginen, Kürbis, Blattgemüse</div><div class=""><b>Obst</b>Beeren, Kiwi, Zitrusfrüchte</div><div class="dx"><b>Fette</b>Olivenöl, Avocado, Nüsse, fettreicher Fisch</div><div class=""><b>Kohlenhydrate</b>Kartoffeln, Reis, Buchweizen, verträgliches Getreide</div><div class="dx"><b>Kräuter</b>Rosmarin, Thymian, Oregano, Ingwer, Basilikum</div></div></div></details><details class=""><summary><span><em class="tag">Vorübergehend</em>Low FODMAP</span></summary><div class="ans"><p class="dx">Der Grund sind sogenannte <b>FODMAPs</b>: bestimmte kurzkettige Kohlenhydrate und Zuckeralkohole, die schlecht aufgenommen und von Darmbakterien vergoren werden. Bei empfindlichen Menschen kann das zu Blähungen, Bauchschmerzen oder Durchfall beitragen. Eine Low-FODMAP-Ernährung ist vor allem beim Reizdarmsyndrom gut untersucht. Auch bei SIBO kann sie die Beschwerden lindern, beseitigt aber nicht nachweislich die Überwucherung selbst.</p><div class="fod"><div class="fr head"><div>Kategorie</div><div class="lo">Häufig besser verträglich</div><div class="hi">Häufig stärker fermentierbar</div></div><div class="fr"><div class="c">Gemüse</div><div class="lo" data-l="Häufig besser verträglich">Karotten, Gurken, Zucchini, Auberginen</div><div class="hi" data-l="Häufig stärker fermentierbar">Zwiebeln, Knoblauch, Blumenkohl, Artischocken</div></div><div class="fr"><div class="c">Obst</div><div class="lo" data-l="Häufig besser verträglich">Kiwi, Erdbeeren, Orangen, Ananas</div><div class="hi" data-l="Häufig stärker fermentierbar">Äpfel, Birnen, Mango, Wassermelone, Brombeeren</div></div><div class="fr"><div class="c">Kohlenhydrate</div><div class="lo" data-l="Häufig besser verträglich">Reis, Kartoffeln, Buchweizen</div><div class="hi" data-l="Häufig stärker fermentierbar">Viele Weizen- und Roggenprodukte</div></div><div class="fr dx"><div class="c">Hülsenfrüchte</div><div class="lo" data-l="Häufig besser verträglich">Kleine Mengen bestimmter Konserven</div><div class="hi" data-l="Häufig stärker fermentierbar">Größere Mengen Bohnen und Linsen</div></div><div class="fr dx"><div class="c">Milchprodukte</div><div class="lo" data-l="Häufig besser verträglich">Laktosefreie Milch, Hartkäse</div><div class="hi" data-l="Häufig stärker fermentierbar">Herkömmliche Milch, laktosereicher Joghurt</div></div><div class="fr dx"><div class="c">Süßungsmittel</div><div class="lo" data-l="Häufig besser verträglich">Haushaltszucker, Ahornsirup in Maßen</div><div class="hi" data-l="Häufig stärker fermentierbar">Sorbit, Xylit, Honig</div></div><div class="fr"><div class="c">Protein</div><div class="lo" data-l="Häufig besser verträglich">Eier, Fisch, naturbelassenes Fleisch, fester Tofu</div><div class="hi" data-l="Häufig stärker fermentierbar">Marinierte Produkte mit Zwiebeln oder Knoblauch</div></div></div><p class="cap dx" style="margin-top:10px">Das ist eine Orientierung, keine feste Regel. Verträglichkeit ist individuell und hängt von der Portionsgröße ab.</p><div class="grid3"><div class="card"><h3>Die Menge macht den Unterschied.</h3><p>Ein Lebensmittel kann in normaler Portion gut verträglich sein und in sehr großer Menge Beschwerden machen. Mehrere einzeln verträgliche Lebensmittel können zusammen zu viel werden. Das nennt man FODMAP Stacking.</p></div><div class="card dx"><h3>Ein Werkzeug auf Zeit.</h3><p>Eine strengere Low-FODMAP-Phase ist zeitlich begrenzt. Üblicherweise folgt nach zwei bis sechs Wochen eine strukturierte Wiedereinführung.</p></div><div class="card"><h3>Gekocht statt roh.</h3><p>Kochen, Dünsten und Schmoren machen Lebensmittel oft leichter verdaulich. Vorübergehend können auch weißer Reis oder helles Sauerteigbrot sinnvoller sein als viel Vollkorn. Die langfristigen Vorteile von Vollkorn bleiben dabei bestehen.</p></div></div></div></details><details class=""><summary><span><em class="tag">Vorübergehend</em>Moderat weniger Kohlenhydrate</span></summary><div class="ans"><p>Kann bei manchen helfen, die fermentierbare Gesamtbelastung zu senken. Dafür ist keine ketogene Ernährung nötig. Wir schauen zuerst auf Art und Verträglichkeit der Kohlenhydrate, dann auf die Menge.</p></div></details><details class=""><summary><span><em class="tag">Kurztest</em>Ballaststoffarmer Test</span></summary><div class="ans"><p>Eine Möglichkeit zu beobachten, wie stark pflanzliche, fermentierbare Bestandteile deine Beschwerden beeinflussen.</p><p><b>Nur nach Rücksprache:</b> Als kurzes Selbstexperiment berichten manche von einem Tag mit ausschließlich tierischen Lebensmitteln (Eier, Fisch, Fleisch). Das kann Hinweise liefern, ist aber weder ein SIBO-Test noch ein Beweis, dass Pflanzliches schädlich ist, und bei Verstopfung kann es kontraproduktiv sein. Eine rein tierische Ernährung ist keine etablierte Behandlung und keine Dauerlösung. Sprich uns vorher an.</p></div></details></div>
 
 <div style="margin-top:56px">
 <span class="eyebrow">Direkt ausprobieren</span>
@@ -243,11 +214,6 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 <p class="muted">Kopiere einen Prompt in Claude, ChatGPT oder ein anderes KI-Tool.</p>
 <div class="prompts"><div class="pr"><h3><span>Meine Wohlfühl-Liste</span><button class="cp" type="button" data-l="Prompt kopieren" data-d="Kopiert">Prompt kopieren</button></h3><code>Gib mir eine Liste mit 20 Lebensmitteln (Gemüse, Obst, Kohlenhydrate, Protein), die auf Basis von Low FODMAP in üblichen Portionen sehr wahrscheinlich gut verträglich sind. Nenne bei jedem die Portionsgröße, bis zu der es als unkritisch gilt, und sortiere nach Kategorien.</code></div><div class="pr"><h3><span>Ein Tag zum Ausprobieren</span><button class="cp" type="button" data-l="Prompt kopieren" data-d="Kopiert">Prompt kopieren</button></h3><code>Schlage mir auf Basis von Low FODMAP vor: ein Frühstück, ein warmes Mittagessen und eine süße Mahlzeit. Alles alltagstauglich, in höchstens 20 Minuten gemacht, mit Zutaten und Mengen, ohne Knoblauch und Zwiebeln.</code></div></div>
 <p class="cap">Das ist eine Orientierung für den Alltag. Es ersetzt nicht die individuelle Abstimmung mit uns.</p>
-</div>
-
-<div style="margin-top:56px"><span class="eyebrow">Langfristige Orientierung</span></div>
-<div class="card"><h3>Langfristige Grundhaltung: paleo-mediterran</h3><p>Als Orientierung eignet sich eine flexible Mischung aus Paleo und mediterraner Ernährung: nährstoffreich, überwiegend wenig verarbeitet und individuell anpassbar. Bewusst nicht streng. Reis, Buchweizen, Milchprodukte oder Hülsenfrüchte dürfen ihren Platz haben, und Süßes ab und zu auch.</p><div class="chips"><div class=""><b>Protein</b>Fisch, Eier, Fleisch, Meeresfrüchte, verträgliche pflanzliche Quellen</div><div class=""><b>Gemüse</b>Karotten, Zucchini, Auberginen, Kürbis, Blattgemüse</div><div class=""><b>Obst</b>Beeren, Kiwi, Zitrusfrüchte</div><div class="dx"><b>Fette</b>Olivenöl, Avocado, Nüsse, fettreicher Fisch</div><div class=""><b>Kohlenhydrate</b>Kartoffeln, Reis, Buchweizen, verträgliches Getreide</div><div class="dx"><b>Kräuter</b>Rosmarin, Thymian, Oregano, Ingwer, Basilikum</div></div></div>
-<div style="margin-top:18px"><details class=""><summary><span><em class="tag">Deep Dive</em>Weitere Ernährungsformen als Werkzeuge</span></summary><div class="ans"><div class="tl"><div><b>Mediterran</b> Gut untersuchte Langzeit-Ernährung mit pflanzlicher Vielfalt, Olivenöl, Fisch und nährstoffreichen Lebensmitteln.</div><div><b>Paleo-orientiert</b> Kann helfen, die Ernährung zu vereinfachen und Hochverarbeitetes zu reduzieren.</div><div><b>Low FODMAP</b> Vorübergehend weniger fermentierbare Kohlenhydrate bei passenden Beschwerden.</div><div><b>Moderat weniger Kohlenhydrate</b> Kann bei manchen helfen, die fermentierbare Gesamtbelastung zu senken. Dafür ist keine ketogene Ernährung nötig. Wir schauen zuerst auf Art und Verträglichkeit der Kohlenhydrate, dann auf die Menge.</div><div><b>Kurzer ballaststoffarmer Test</b> Eine Möglichkeit zu beobachten, wie stark pflanzliche, fermentierbare Bestandteile deine Beschwerden beeinflussen.</div></div><p><b>Nur nach Rücksprache:</b> Als kurzes Selbstexperiment berichten manche von einem Tag mit ausschließlich tierischen Lebensmitteln (Eier, Fisch, Fleisch). Das kann Hinweise liefern, ist aber weder ein SIBO-Test noch ein Beweis, dass Pflanzliches schädlich ist, und bei Verstopfung kann es kontraproduktiv sein. Eine rein tierische Ernährung ist keine etablierte Behandlung und keine Dauerlösung. Sprich uns vorher an.</p></div></details></div>
 </div>
 </div></section>
 
@@ -270,13 +236,11 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 <div class="card" style="margin-top:34px"><h3>Und die Supplemente?</h3><p>Supplemente können die Grundversorgung und bestimmte Körperfunktionen unterstützen. Sie ersetzen aber weder eine Ursachenanalyse noch eine individuelle Strategie. Welche für dich sinnvoll sind und in welcher Dosierung, stimmen wir persönlich auf dich ab. Deshalb findest du hier bewusst keine pauschalen Empfehlungen.</p></div>
 </div></section>
 
-<section class="sec" id="checkliste"><div class="wrap">
+<section class="sec" id="ueberblick"><div class="wrap">
 <span class="eyebrow">Zum Mitnehmen</span>
-<h2>Deine Grundlagen-Checkliste.</h2>
-<p class="muted">Hake ab, was du schon machst oder als Nächstes ausprobieren willst. Dein Stand bleibt auf diesem Gerät gespeichert.</p>
-<ul class="cl"><li><label><input type="checkbox"><span>Mein aktuelles Darmniveau einschätzen und festhalten.</span></label></li><li><label><input type="checkbox"><span>Überwiegend nährstoffreiche, wenig verarbeitete Lebensmittel essen.</span></label></li><li><label><input type="checkbox"><span>Ausreichend Energie, Protein und Flüssigkeit aufnehmen.</span></label></li><li><label><input type="checkbox"><span>Lebensmittel nach individueller Verträglichkeit auswählen.</span></label></li><li><label><input type="checkbox"><span>Bei Bedarf gekochte statt rohe Lebensmittel essen.</span></label></li><li><label><input type="checkbox"><span>Ballaststoffe und fermentierbare Kohlenhydrate individuell anpassen.</span></label></li><li><label><input type="checkbox"><span>Eine zwölfstündige nächtliche Essenspause ausprobieren.</span></label></li><li><label><input type="checkbox"><span>Unnötiges Snacking am Abend reduzieren.</span></label></li><li><label><input type="checkbox"><span>Alkohol möglichst gering halten oder weglassen.</span></label></li><li><label><input type="checkbox"><span>Sich regelmäßig bewegen und Krafttraining sinnvoll dosieren.</span></label></li><li><label><input type="checkbox"><span>Schlaf, Stressregulation und Erholung priorisieren.</span></label></li><li><label><input type="checkbox"><span>Bei anhaltenden Beschwerden die Ursachen gezielt abklären lassen.</span></label></li></ul>
-<div class="score"><div class="bar"><i id="cbar"></i></div><b id="ccnt" data-of="von"></b></div>
-<button class="lnk" id="creset" type="button">Zurücksetzen</button>
+<h2>Auf einen Blick.</h2>
+<ul class="tick ov"><li class="">Darmgesundheit hat viele Ursachen. Pauschale Tipps passen nicht zu jedem Darm.</li><li class="">Einschränkung ist ein Werkzeug auf Zeit, kein Dauerzustand.</li><li class="">Gesund heißt nicht automatisch gut verträglich.</li><li class="">Bei empfindlichem Darm ist Gekochtes oft leichter verdaulich als Rohes.</li><li class="dx">Art, Menge und Zeitpunkt zählen mehr als einzelne Lebensmittel.</li><li class="">Eine nächtliche Essenspause von etwa zwölf Stunden ist für viele gut machbar.</li><li class="">Schlaf, Stress und Erholung gehören genauso dazu wie Ernährung.</li><li class="dx">Supplemente und Details stimmen wir individuell mit dir ab.</li></ul>
+<div class="note">Du musst nichts davon allein umsetzen. Was für dich sinnvoll ist und in welcher Reihenfolge, legen wir gemeinsam fest. Bei anhaltenden Beschwerden lohnt es sich zusätzlich, die Ursachen gezielt abklären zu lassen.</div>
 </div></section>
 
 <section class="sec"><div class="wrap">
@@ -294,11 +258,16 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 <script>
 (function(){
 document.querySelectorAll('.lang a').forEach(function(a){a.addEventListener('click',function(){try{document.cookie='lang='+a.getAttribute('data-lang')+'; path=/; max-age=31536000; SameSite=Lax'}catch(e){}})});
-// Darmniveau
-var s=document.getElementById('lvl');
-if(s){var D=JSON.parse(document.getElementById('lvl-data').textContent),L=D.levels,n=document.getElementById('lvl-n'),o=document.getElementById('lvl-o'),p=document.getElementById('lvl-p'),d=document.getElementById('lvl-d'),sp=document.querySelectorAll('.lv-ph span');
-function up(){var v=+s.value;n.textContent=v;s.setAttribute('aria-valuetext',v+'/10');for(var i=0;i<L.length;i++){if(v>=L[i][0]&&v<=L[i][1]){var k=L[i][2];p.textContent=D.word+' '+(k+1)+' \u00b7 '+D.phases[k];o.textContent=L[i][3];d.textContent=L[i][4];sp.forEach(function(x,j){x.classList.toggle('on',j===k)});break}}}
-s.addEventListener('input',up);up()}
+// Faktoren
+var tl=document.querySelectorAll('.mf-t'),pn=document.getElementById('mfp');
+if(tl.length&&pn){var M=JSON.parse(document.getElementById('mf-data').textContent),cur=-1;
+tl.forEach(function(b,i){b.addEventListener('click',function(){
+tl.forEach(function(x){x.setAttribute('aria-expanded','false');x.querySelector('i').textContent='+'});
+if(cur===i){cur=-1;pn.hidden=true;return}
+cur=i;b.setAttribute('aria-expanded','true');b.querySelector('i').textContent='\u2013';
+document.getElementById('mfp-t').textContent=M[i][0];document.getElementById('mfp-p').textContent=M[i][1];pn.hidden=false;
+try{pn.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(e){}
+})})}
 // Prompts kopieren
 document.querySelectorAll('.cp').forEach(function(b){b.addEventListener('click',function(){
 var t=b.closest('.pr').querySelector('code').textContent,lab=b.getAttribute('data-l'),done=b.getAttribute('data-d');
@@ -306,13 +275,6 @@ function ok(){b.textContent=done;b.classList.add('ok');setTimeout(function(){b.t
 if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,fb)}else{fb()}
 function fb(){var x=document.createElement('textarea');x.value=t;x.style.position='fixed';x.style.opacity='0';document.body.appendChild(x);x.select();try{document.execCommand('copy');ok()}catch(e){}document.body.removeChild(x)}
 })});
-// Checkliste
-var cl=document.querySelectorAll('.cl input'),key='bg-checks',bar=document.getElementById('cbar'),cnt=document.getElementById('ccnt'),tot=cl.length;
-function paint(){var c=0;cl.forEach(function(i){if(i.checked)c++});bar.style.width=(c/tot*100)+'%';cnt.textContent=c+' '+cnt.getAttribute('data-of')+' '+tot}
-try{var sv=JSON.parse(localStorage.getItem(key)||'[]');cl.forEach(function(i,k){if(sv.indexOf(k)>-1)i.checked=true})}catch(e){}
-cl.forEach(function(i){i.addEventListener('change',function(){try{var a=[];cl.forEach(function(j,k){if(j.checked)a.push(k)});localStorage.setItem(key,JSON.stringify(a))}catch(e){}paint()})});
-var rs=document.getElementById('creset');if(rs)rs.addEventListener('click',function(){cl.forEach(function(i){i.checked=false});try{localStorage.removeItem(key)}catch(e){}paint()});
-paint();
 })();
 </script>
 </body>

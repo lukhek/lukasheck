@@ -77,7 +77,6 @@ ul.tick li:before{content:"";position:absolute;left:4px;top:.6em;width:10px;heig
 .hero .lede{font-size:clamp(1.15rem,2.2vw,1.45rem);max-width:30ch}
 .hero .intro{margin-top:26px;max-width:54ch;color:var(--muted)}
 .pill{display:inline-block;margin-top:26px;font:500 .72rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:8px 12px}
-.reassure{margin-top:30px}
 .goals{margin-top:34px;padding:22px 24px;background:var(--surface);border:1px solid var(--line);border-radius:16px}
 .goals .eyebrow{margin-bottom:8px}
 .goals ul{margin:6px 0 0;columns:2;column-gap:30px}
@@ -96,23 +95,29 @@ summary:focus-visible,.btn:focus-visible,input:focus-visible{outline:2px solid v
 .ans{color:var(--muted);margin-top:12px}
 .ans b{color:var(--fg)}
 .ans p+p{margin-top:10px}
-/* level slider */
-.lv{margin:26px 0 8px;display:grid;grid-template-columns:auto 1fr;gap:20px 24px;align-items:center}
-.lv-num{font:500 2.2rem/1 var(--mono);width:84px;height:84px;border-radius:50%;border:1.5px solid var(--accent);display:grid;place-items:center;color:var(--accent);background:var(--accent-soft)}
-.lv-lab{font-weight:600}
-.lv input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:12px;border-radius:6px;margin:16px 0 8px;background:linear-gradient(to right,var(--accent) 0 27.7%,#2E8E96 27.7% 61.1%,var(--warm) 61.1% 100%)}
-.lv input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:var(--fg);border:5px solid var(--bg);box-shadow:0 0 0 2px var(--fg);cursor:grab}
-.lv input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--fg);border:5px solid var(--bg);box-shadow:0 0 0 2px var(--fg);cursor:grab}
-.lv-ph{display:flex;font:500 .64rem/1.2 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
-.lv-ph span{display:block;transition:color .2s}
-.lv-ph span:nth-child(1){width:27.7%}.lv-ph span:nth-child(2){width:33.4%}.lv-ph span:nth-child(3){width:38.9%}
-.lv-ph span.on{color:var(--fg)}
-@media(max-width:560px){.lv-ph{font-size:.56rem;letter-spacing:0}.lv-ph span{white-space:nowrap;padding-right:6px}}
-.lv-out span{display:block;color:var(--muted);margin-top:10px;font-size:1rem}
-.lv-out{grid-column:1/-1;padding:18px 20px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
-.lv-out small{display:block;font:500 .7rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-.lv-out strong{font-weight:500;font-size:1.25rem;display:block}
-@media(max-width:560px){.lv{grid-template-columns:1fr}.lv-num{width:64px;height:64px;font-size:1.6rem}}
+/* faktoren */
+.mf{margin:30px 0 6px}
+.mf-hub{display:flex;flex-direction:column;align-items:center}
+.mf-hub span{padding:13px 30px;border:1.5px solid var(--accent);border-radius:999px;background:var(--accent-soft);font-weight:600;letter-spacing:-.01em}
+.mf-hub:after{content:"";width:2px;height:22px;background:rgba(67,184,193,.45)}
+.mf-grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding-top:22px}
+.mf-grid:before{content:"";position:absolute;top:0;left:12.5%;right:12.5%;height:2px;background:rgba(67,184,193,.45)}
+.mf-t{position:relative;font:600 .98rem/1.25 var(--font);color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:15px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;text-align:left;min-height:58px;transition:border-color .2s,background .2s}
+.mf-t:before{content:"";position:absolute;top:-22px;left:50%;width:2px;height:22px;background:rgba(67,184,193,.45)}
+.mf-t:nth-child(n+5):before{display:none}
+.mf-t:hover{border-color:var(--accent)}
+.mf-t[aria-expanded=true]{border-color:var(--accent);background:var(--accent-soft)}
+.mf-t i{font-style:normal;color:var(--accent);font-size:1.3rem;line-height:1;flex:none}
+.mf-t:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.mf-hint{text-align:center;font:500 .7rem/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:14px}
+.mf-panel{margin-top:14px;padding:18px 20px;background:var(--surface);border:1px solid var(--accent);border-radius:14px}
+.mf-panel h3{color:var(--accent);margin-bottom:6px}
+.mf-panel p{color:var(--fg)}
+@media(max-width:700px){.mf-grid{grid-template-columns:1fr 1fr;padding-top:14px}.mf-grid:before,.mf-t:before{display:none}.mf-hub:after{height:14px}}
+.sur{margin:26px 0 22px}
+.sur p b{color:var(--fg)}
+.forms{margin:6px 0 0}
+.ov{margin:22px 0}
 /* myths */
 .myths{margin:26px 0}
 .myth{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;padding:16px 0;border-bottom:1px solid var(--line)}
@@ -138,13 +143,6 @@ summary:focus-visible,.btn:focus-visible,input:focus-visible{outline:2px solid v
 .pr code{display:block;font:400 .86rem/1.6 var(--mono);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;white-space:pre-wrap;word-break:break-word}
 .cp{font:600 .8rem/1 var(--font);color:var(--accent);background:transparent;border:1px solid var(--accent);border-radius:999px;padding:9px 14px;cursor:pointer;white-space:nowrap;min-height:38px;transition:background .2s,color .2s}
 .cp:hover,.cp.ok{background:var(--accent);color:var(--on-accent)}
-/* phases */
-.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px 0}
-.ph{border-top:3px solid var(--line);padding-top:14px}
-.ph:nth-child(1){border-color:var(--accent)}.ph:nth-child(2){border-color:#2E8E96}.ph:nth-child(3){border-color:var(--warm)}
-.ph small{font:500 .7rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
-.ph b{font-size:1.25rem;font-weight:500;display:block;margin-bottom:4px}
-@media(max-width:620px){.phases{grid-template-columns:1fr}}
 .chips{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin:20px 0}
 .chips div{padding:12px 0;border-bottom:1px solid var(--line);font-size:.97rem;color:var(--muted)}
 .chips b{display:block;color:var(--accent);font:500 .7rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
@@ -160,18 +158,6 @@ summary:focus-visible,.btn:focus-visible,input:focus-visible{outline:2px solid v
 .leg i.n{background:#2F5453}
 @media(max-width:620px){.clockrow{grid-template-columns:1fr;justify-items:center}.clockrow svg{max-width:240px}}
 .motto{font-size:clamp(1.3rem,2.6vw,1.7rem);margin:28px 0 8px;color:var(--accent)}
-/* checklist */
-.cl{list-style:none;padding:0;margin:20px 0}
-.cl label{display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start;padding:13px 0;border-bottom:1px solid var(--line);cursor:pointer}
-.cl input{appearance:none;-webkit-appearance:none;width:24px;height:24px;border:1.5px solid var(--muted);border-radius:7px;background:transparent;margin:0;cursor:pointer;display:grid;place-items:center;transition:background .15s,border-color .15s}
-.cl input:checked{background:var(--accent);border-color:var(--accent)}
-.cl input:checked:after{content:"";width:11px;height:6px;border-left:2.5px solid var(--on-accent);border-bottom:2.5px solid var(--on-accent);transform:rotate(-45deg) translate(1px,-1px)}
-.cl input:checked+span{color:var(--muted)}
-.score{display:flex;align-items:center;gap:16px;margin-top:6px}
-.bar{flex:1;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
-.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
-.score b{font:500 .95rem/1 var(--mono);color:var(--accent);white-space:nowrap}
-.lnk{background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;font:inherit;font-size:.9rem;padding:6px 0;margin-top:8px}
 .quote{font-size:clamp(1.5rem,3.4vw,2.3rem);line-height:1.2;letter-spacing:-.02em;margin:34px 0 8px;text-wrap:balance}
 .disc{font-size:.88rem;color:var(--muted);margin-top:30px}
 footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
@@ -182,7 +168,7 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 <body>
 <header class="nav"><div class="wrap">
 <div class="lang" role="group" aria-label="Language"><a href="/bulletproof-gut/" lang="en" hreflang="en" data-lang="en" aria-label="English" aria-current="true"><svg class="flag" viewBox="0 0 60 30" width="18" height="12" aria-hidden="true"><clipPath id="fs"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="ft"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#fs)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#ft)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg><span class="lt">EN</span></a><a href="/de/bulletproof-gut/" lang="de" hreflang="de" data-lang="de" aria-label="Deutsch"><svg class="flag" viewBox="0 0 5 3" width="18" height="12" aria-hidden="true"><rect width="5" height="3" fill="#FFCE00"/><rect width="5" height="2" fill="#DD0000"/><rect width="5" height="1" fill="#000"/></svg><span class="lt">DE</span></a></div>
-<nav class="links" aria-label="Main navigation"><a href="#verstehen">Understand</a><a href="#niveau">Gut level</a><a href="#mythen">Myths</a><a href="#essen">Eating</a><a href="#rhythmus">Rhythm</a><a href="#checkliste">Checklist</a></nav>
+<nav class="links" aria-label="Main navigation"><a href="#verstehen">Understand</a><a href="#mythen">Myths</a><a href="#essen">Eating</a><a href="#rhythmus">Rhythm</a><a href="#ueberblick">Overview</a></nav>
 </div></header>
 
 <section class="hero"><div class="wrap">
@@ -192,33 +178,20 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 <p class="intro">The goal is not to manage gut problems for the rest of your life. The goal is a gut that can regulate itself as well as possible. Read this page through once, calmly. Afterwards you will know how we approach the topic and why.</p>
 <span class="pill">approx. 8 min read</span>
 <div class="goals"><span class="eyebrow">The goal: a Bulletproof Gut</span><ul class="tick"><li class="">A stable microbial balance</li><li class="">A working gut barrier</li><li class="dx">A capable natural defence</li><li class="dx">Good recovery capacity</li><li class="">Reliable digestion</li><li class="">High individual food tolerance</li><li class="">As much freedom in daily life as possible</li></ul></div>
-<div class="note reassure"><b>You are in the right place.</b> You don't have to change everything at once or cut anything out for good. We take it step by step: first understand, then test with purpose, then win your freedom back.</div>
 </div></section>
 
 <main>
 <section class="sec" id="verstehen"><div class="wrap">
 <span class="eyebrow">The foundation</span>
 <h2>Gut health has many moving parts.</h2>
-<p>Two people can have almost the same symptoms and completely different causes. What helps one, such as more fibre, can make things worse for the other. That is why there is no standard plan. We look closely, observe how you react and adjust.</p>
-<div class="pipe" role="group" aria-label="Digestive path from stomach through small intestine to large intestine, below it gut barrier, immune system and gut–brain axis"><div class="row"><div class="st"><b>Stomach</b><span>Stomach acid · protein</span></div><div class="ar" aria-hidden="true">&rarr;</div><div class="st"><b>Small intestine</b><span>Bile · enzymes · Paneth cells</span></div><div class="ar" aria-hidden="true">&rarr;</div><div class="st"><b>Large intestine</b><span>Microbiome · butyrate</span></div></div><div class="bar2">Gut barrier · immune system · gut–brain axis</div></div>
-<p class="cap dx">Good digestion starts before the gut. The whole digestive tract works as one connected system.</p>
-<details class=""><summary><span><em class="tag">Deep dive</em>Protection and repair mechanisms</span></summary><div class="ans"><div class="tl"><div><b>Intestinal stem cells</b> allow the lining to renew constantly. Many intestinal epithelial cells are replaced within a few days.</div><div><b>Paneth cells</b> produce the body&#x27;s own antimicrobial substances and help regulate the microbial balance in the small intestine.</div><div><b>Gut barrier</b> controls which substances are absorbed and which stay out.</div></div><p>All of this works closely with the immune system. Alcohol, chronic inflammation, undernutrition and excessive strain can impair it.</p></div></details><details class=""><summary><span><em class="tag">Deep dive</em>Butyrate and co.: what gut bacteria make for us</span></summary><div class="ans"><p>Gut bacteria produce short-chain fatty acids such as butyrate, acetate and propionate, among other things when fermenting certain fibres. Butyrate is an important energy source for the cells of the colon lining and supports the gut barrier and immune regulation. That is why a varied, individually tolerated diet is the long-term goal. With a low gut level it can make sense to temporarily reduce certain fermentable foods and bring them back later.</p></div></details><details class="dx"><summary><span><em class="tag">Deep dive</em>Building blocks: protein and amino acids</span></summary><div class="ans"><p>For repair and renewal the gut needs enough energy, protein and amino acids. Glutamine fuels certain gut and immune cells, glycine and proline are building blocks of collagen and connective tissue, cysteine is a precursor of the antioxidant glutathione. Animal foods often make supply straightforward, but a well-planned plant-based diet can cover the need too. What counts is enough, well-tolerated supply, not the dietary philosophy.</p></div></details>
-</div></section>
-
-<section class="sec" id="niveau"><div class="wrap">
-<span class="eyebrow">Your gut level</span>
-<h2>Where do you stand right now?</h2>
-<p class="lead">The best diet is the one that fits you. Restriction is a tool for a while, not a permanent state.</p>
-<p class="muted">Rate on a scale from 1 to 10 how your digestion is doing right now. Think of bloating, stool consistency, regularity, abdominal pain and tolerance. Move the slider and see what it means for your daily life.</p>
-<div class="lv">
-<div class="lv-num" id="lvl-n" aria-hidden="true">5</div>
-<div><label class="lv-lab" for="lvl">How do you rate your gut health right now?</label>
-<input type="range" id="lvl" min="1" max="10" step="1" value="5">
-<div class="lv-ph" aria-hidden="true"><span>Stabilise</span><span>Build</span><span>Expand</span></div></div>
-<div class="lv-out" aria-live="polite"><small id="lvl-p"></small><strong id="lvl-o"></strong><span id="lvl-d"></span></div>
+<p>Two people can have almost the same symptoms and completely different causes. That is why there is no standard plan. We look closely, observe how you react and adjust.</p>
+<div class="mf" role="group" aria-label="Your gut at the centre, influenced by nutrition, lifestyle, genetics, medical history, nervous system, mind, microbiome and digestion">
+<div class="mf-hub"><span>Your gut</span></div>
+<div class="mf-grid"><button type="button" class="mf-t" aria-expanded="false"><span>Nutrition</span><i aria-hidden="true">+</i></button><button type="button" class="mf-t" aria-expanded="false"><span>Lifestyle</span><i aria-hidden="true">+</i></button><button type="button" class="mf-t" aria-expanded="false"><span>Genetics</span><i aria-hidden="true">+</i></button><button type="button" class="mf-t" aria-expanded="false"><span>Medical history</span><i aria-hidden="true">+</i></button><button type="button" class="mf-t" aria-expanded="false"><span>Nervous system</span><i aria-hidden="true">+</i></button><button type="button" class="mf-t" aria-expanded="false"><span>Mind</span><i aria-hidden="true">+</i></button><button type="button" class="mf-t" aria-expanded="false"><span>Microbiome</span><i aria-hidden="true">+</i></button><button type="button" class="mf-t" aria-expanded="false"><span>Digestion</span><i aria-hidden="true">+</i></button></div>
+<p class="mf-hint">Tap a factor to learn more.</p>
+<div class="mf-panel" id="mfp" aria-live="polite" hidden><h3 id="mfp-t"></h3><p id="mfp-p"></p></div>
 </div>
-<script type="application/json" id="lvl-data">{"levels": [[1, 3, 0, "Stabilise and deliberately reduce strain", "In daily life: deliberately reduce triggers and look more closely at your diet. Simple, cooked, well tolerated."], [4, 6, 1, "Improve individual tolerance", "In daily life: test foods one by one and step by step bring back what you tolerate well."], [7, 8, 2, "Build variety and resilience", "In daily life: your diet gets noticeably freer. You build variety and test how much your gut can handle."], [9, 10, 2, "Maintain health and live flexibly", "In daily life: you live flexibly. Exceptions and deviations are no longer a problem."]], "phases": ["Stabilise", "Build", "Expand"], "word": "Phase"}</script>
-<p class="muted" style="margin-top:20px">The gut level is a simple, subjective tool to get symptom-free faster and more practically. It is not a medically validated diagnostic tool.</p>
+<script type="application/json" id="mf-data">[["Nutrition", "What you eat, how much, raw or cooked and in which combination. The same foods affect every person differently."], ["Lifestyle", "Sleep, movement, alcohol, meal rhythm and recovery influence gut movement, lining and defence."], ["Genetics", "Genetic differences can influence how you digest food and which foods you tolerate well."], ["Medical history", "Past infections, inflammation, illnesses and medication can shape the gut and microbiome for a long time."], ["Nervous system", "Gut and brain talk to each other constantly. Stress can change gut movement, pain sensitivity and digestion."], ["Mind", "Tension, worries, overload and also persistent loneliness can affect digestion via the gut–brain axis."], ["Microbiome", "What matters is not only which bacteria are there but what they produce. Butyrate, for example, feeds the lining and strengthens the gut barrier."], ["Digestion", "Stomach acid, bile and enzymes prepare everything. If they don't work well, the environment in the gut changes too."]]</script>
 </div></section>
 
 <section class="sec" id="mythen"><div class="wrap">
@@ -229,13 +202,11 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 </div></section>
 
 <section class="sec" id="essen"><div class="wrap">
-<span class="eyebrow">Eating in practice</span>
-<h2>Healthy doesn&#x27;t automatically mean well tolerated.</h2>
-<p class="lead">An example that surprises many: <b>carrots, kiwi and oranges</b> are tolerated much better by many people with a sensitive gut than, say, <b>blackberries or apples</b>, even though all of them are equally “healthy”.</p>
-<p class="muted dx">The reason is <b>FODMAPs</b>: certain short-chain carbohydrates and sugar alcohols that are poorly absorbed and fermented by gut bacteria. In sensitive people this can contribute to bloating, abdominal pain or diarrhoea. A low-FODMAP diet is best studied in irritable bowel syndrome. In SIBO it can ease symptoms, but it has not been shown to clear the overgrowth itself.</p>
-<div class="fod"><div class="fr head"><div>Category</div><div class="lo">Often better tolerated</div><div class="hi">Often more fermentable</div></div><div class="fr"><div class="c">Vegetables</div><div class="lo" data-l="Often better tolerated">Carrots, cucumbers, zucchini, aubergines</div><div class="hi" data-l="Often more fermentable">Onions, garlic, cauliflower, artichokes</div></div><div class="fr"><div class="c">Fruit</div><div class="lo" data-l="Often better tolerated">Kiwi, strawberries, oranges, pineapple</div><div class="hi" data-l="Often more fermentable">Apples, pears, mango, watermelon, blackberries</div></div><div class="fr"><div class="c">Carbohydrates</div><div class="lo" data-l="Often better tolerated">Rice, potatoes, buckwheat</div><div class="hi" data-l="Often more fermentable">Many wheat and rye products</div></div><div class="fr dx"><div class="c">Legumes</div><div class="lo" data-l="Often better tolerated">Small amounts of certain canned products</div><div class="hi" data-l="Often more fermentable">Larger amounts of beans and lentils</div></div><div class="fr dx"><div class="c">Dairy</div><div class="lo" data-l="Often better tolerated">Lactose-free milk, hard cheese</div><div class="hi" data-l="Often more fermentable">Regular milk, high-lactose yoghurt</div></div><div class="fr dx"><div class="c">Sweeteners</div><div class="lo" data-l="Often better tolerated">Table sugar, maple syrup in moderation</div><div class="hi" data-l="Often more fermentable">Sorbitol, xylitol, honey</div></div><div class="fr"><div class="c">Protein</div><div class="lo" data-l="Often better tolerated">Eggs, fish, unseasoned meat, firm tofu</div><div class="hi" data-l="Often more fermentable">Marinated products with onion or garlic</div></div></div>
-<p class="cap dx" style="margin-top:10px">This is a guide, not a fixed rule. Tolerance is individual and depends on portion size.</p>
-<div class="grid3"><div class="card"><h3>The amount makes the difference.</h3><p>A food can be fine in a normal portion and cause symptoms in a very large one. Several individually tolerated foods can add up to too much together. This is called FODMAP stacking.</p></div><div class="card dx"><h3>A tool for a limited time.</h3><p>A stricter low-FODMAP phase is time-limited. Usually a structured reintroduction follows after two to six weeks.</p></div><div class="card"><h3>Cooked instead of raw.</h3><p>Cooking, steaming and braising often make food easier to digest. For a while, white rice or light sourdough bread can also make more sense than lots of wholegrain. The long-term benefits of wholegrain remain.</p></div></div>
+<span class="eyebrow">Nutrition</span>
+<h2>Eating is more than macros and gut.</h2>
+<p class="lead">Nutrition is individual and always more than macros and gut. It is also enjoyment, company and cravings. That is why you will find here a collection of nutrition approaches and philosophies we can use to support your gut. Restriction is a tool for a while, not a permanent state.</p>
+<div class="card sur"><h3>Healthy doesn&#x27;t automatically mean well tolerated.</h3><p>An example that surprises many: <b>carrots, kiwi and oranges</b> are tolerated much better by many people with a sensitive gut than, say, <b>blackberries or apples</b>, even though all of them are equally “healthy”.</p></div>
+<div class="forms"><details class=""><summary><span><em class="tag">Long-term</em>Mediterranean</span></summary><div class="ans"><p>A well-studied way of eating built on plant variety, olive oil, fish and nutrient-dense foods.</p></div></details><details class=""><summary><span><em class="tag">Orientation</em>Paleo-oriented</span></summary><div class="ans"><p>Can help simplify eating and cut back on highly processed food.</p></div></details><details class=""><summary><span><em class="tag">Mindset</em>Paleo-Mediterranean</span></summary><div class="ans"><p>A flexible blend of Paleo and Mediterranean eating works well as orientation: nutrient-dense, mostly minimally processed and adjustable to you. Deliberately not strict. Rice, buckwheat, dairy or legumes can have their place, and so can the occasional sweet.</p><div class="chips"><div class=""><b>Protein</b>Fish, eggs, meat, seafood, tolerated plant sources</div><div class=""><b>Vegetables</b>Carrots, zucchini, aubergines, pumpkin, leafy greens</div><div class=""><b>Fruit</b>Berries, kiwi, citrus</div><div class="dx"><b>Fats</b>Olive oil, avocado, nuts, fatty fish</div><div class=""><b>Carbohydrates</b>Potatoes, rice, buckwheat, tolerated grains</div><div class="dx"><b>Herbs</b>Rosemary, thyme, oregano, ginger, basil</div></div></div></details><details class=""><summary><span><em class="tag">Temporary</em>Low FODMAP</span></summary><div class="ans"><p class="dx">The reason is <b>FODMAPs</b>: certain short-chain carbohydrates and sugar alcohols that are poorly absorbed and fermented by gut bacteria. In sensitive people this can contribute to bloating, abdominal pain or diarrhoea. A low-FODMAP diet is best studied in irritable bowel syndrome. In SIBO it can ease symptoms, but it has not been shown to clear the overgrowth itself.</p><div class="fod"><div class="fr head"><div>Category</div><div class="lo">Often better tolerated</div><div class="hi">Often more fermentable</div></div><div class="fr"><div class="c">Vegetables</div><div class="lo" data-l="Often better tolerated">Carrots, cucumbers, zucchini, aubergines</div><div class="hi" data-l="Often more fermentable">Onions, garlic, cauliflower, artichokes</div></div><div class="fr"><div class="c">Fruit</div><div class="lo" data-l="Often better tolerated">Kiwi, strawberries, oranges, pineapple</div><div class="hi" data-l="Often more fermentable">Apples, pears, mango, watermelon, blackberries</div></div><div class="fr"><div class="c">Carbohydrates</div><div class="lo" data-l="Often better tolerated">Rice, potatoes, buckwheat</div><div class="hi" data-l="Often more fermentable">Many wheat and rye products</div></div><div class="fr dx"><div class="c">Legumes</div><div class="lo" data-l="Often better tolerated">Small amounts of certain canned products</div><div class="hi" data-l="Often more fermentable">Larger amounts of beans and lentils</div></div><div class="fr dx"><div class="c">Dairy</div><div class="lo" data-l="Often better tolerated">Lactose-free milk, hard cheese</div><div class="hi" data-l="Often more fermentable">Regular milk, high-lactose yoghurt</div></div><div class="fr dx"><div class="c">Sweeteners</div><div class="lo" data-l="Often better tolerated">Table sugar, maple syrup in moderation</div><div class="hi" data-l="Often more fermentable">Sorbitol, xylitol, honey</div></div><div class="fr"><div class="c">Protein</div><div class="lo" data-l="Often better tolerated">Eggs, fish, unseasoned meat, firm tofu</div><div class="hi" data-l="Often more fermentable">Marinated products with onion or garlic</div></div></div><p class="cap dx" style="margin-top:10px">This is a guide, not a fixed rule. Tolerance is individual and depends on portion size.</p><div class="grid3"><div class="card"><h3>The amount makes the difference.</h3><p>A food can be fine in a normal portion and cause symptoms in a very large one. Several individually tolerated foods can add up to too much together. This is called FODMAP stacking.</p></div><div class="card dx"><h3>A tool for a limited time.</h3><p>A stricter low-FODMAP phase is time-limited. Usually a structured reintroduction follows after two to six weeks.</p></div><div class="card"><h3>Cooked instead of raw.</h3><p>Cooking, steaming and braising often make food easier to digest. For a while, white rice or light sourdough bread can also make more sense than lots of wholegrain. The long-term benefits of wholegrain remain.</p></div></div></div></details><details class=""><summary><span><em class="tag">Temporary</em>Moderately fewer carbohydrates</span></summary><div class="ans"><p>Can help some people lower the overall fermentable load. A ketogenic diet is not needed for that. We look first at type and tolerance of carbohydrates, then at the amount.</p></div></details><details class=""><summary><span><em class="tag">Short test</em>Low-fibre test</span></summary><div class="ans"><p>A way to observe how much plant-based, fermentable components affect your symptoms.</p><p><b>Only after talking to us:</b> As a short self-experiment, some people report trying a day of animal foods only (eggs, fish, meat). It can give hints, but it is neither a SIBO test nor proof that plant foods are harmful, and with constipation it can backfire. An animal-only diet is not an established treatment and not a long-term solution. Please speak to us first.</p></div></details></div>
 
 <div style="margin-top:56px">
 <span class="eyebrow">Try it right away</span>
@@ -243,11 +214,6 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 <p class="muted">Copy a prompt into Claude, ChatGPT or another AI tool.</p>
 <div class="prompts"><div class="pr"><h3><span>My feel-good list</span><button class="cp" type="button" data-l="Copy prompt" data-d="Copied">Copy prompt</button></h3><code>Give me a list of 20 foods (vegetables, fruit, carbohydrates, protein) that are very likely well tolerated in usual portions based on low FODMAP. For each one, name the portion size up to which it is considered unproblematic, and sort by category.</code></div><div class="pr"><h3><span>A day to try</span><button class="cp" type="button" data-l="Copy prompt" data-d="Copied">Copy prompt</button></h3><code>Based on low FODMAP, suggest one breakfast, one warm lunch and one sweet meal. Everything practical, ready in 20 minutes at most, with ingredients and amounts, without garlic and onions.</code></div></div>
 <p class="cap">This is guidance for daily life. It does not replace the individual plan we work out with you.</p>
-</div>
-
-<div style="margin-top:56px"><span class="eyebrow">Long-term orientation</span></div>
-<div class="card"><h3>Long-term mindset: Paleo-Mediterranean</h3><p>A flexible blend of Paleo and Mediterranean eating works well as orientation: nutrient-dense, mostly minimally processed and adjustable to you. Deliberately not strict. Rice, buckwheat, dairy or legumes can have their place, and so can the occasional sweet.</p><div class="chips"><div class=""><b>Protein</b>Fish, eggs, meat, seafood, tolerated plant sources</div><div class=""><b>Vegetables</b>Carrots, zucchini, aubergines, pumpkin, leafy greens</div><div class=""><b>Fruit</b>Berries, kiwi, citrus</div><div class="dx"><b>Fats</b>Olive oil, avocado, nuts, fatty fish</div><div class=""><b>Carbohydrates</b>Potatoes, rice, buckwheat, tolerated grains</div><div class="dx"><b>Herbs</b>Rosemary, thyme, oregano, ginger, basil</div></div></div>
-<div style="margin-top:18px"><details class=""><summary><span><em class="tag">Deep dive</em>More eating styles as tools</span></summary><div class="ans"><div class="tl"><div><b>Mediterranean</b> A well-studied long-term diet built on plant variety, olive oil, fish and nutrient-dense foods.</div><div><b>Paleo-oriented</b> Can help simplify eating and cut back on highly processed food.</div><div><b>Low FODMAP</b> Temporarily fewer fermentable carbohydrates for matching symptoms.</div><div><b>Moderately fewer carbohydrates</b> Can help some people lower the overall fermentable load. A ketogenic diet is not needed for that. We look first at type and tolerance of carbohydrates, then at the amount.</div><div><b>Short low-fibre test</b> A way to observe how much plant-based, fermentable components affect your symptoms.</div></div><p><b>Only after talking to us:</b> As a short self-experiment, some people report trying a day of animal foods only (eggs, fish, meat). It can give hints, but it is neither a SIBO test nor proof that plant foods are harmful, and with constipation it can backfire. An animal-only diet is not an established treatment and not a long-term solution. Please speak to us first.</p></div></details></div>
 </div>
 </div></section>
 
@@ -270,13 +236,11 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 <div class="card" style="margin-top:34px"><h3>What about supplements?</h3><p>Supplements can support basic supply and certain body functions. But they replace neither a root-cause analysis nor an individual strategy. Which ones make sense for you and at what dose, we work out personally with you. That is why you will deliberately not find blanket recommendations here.</p></div>
 </div></section>
 
-<section class="sec" id="checkliste"><div class="wrap">
+<section class="sec" id="ueberblick"><div class="wrap">
 <span class="eyebrow">To take with you</span>
-<h2>Your fundamentals checklist.</h2>
-<p class="muted">Tick what you already do or want to try next. Your progress stays saved on this device.</p>
-<ul class="cl"><li><label><input type="checkbox"><span>Rate my current gut level and write it down.</span></label></li><li><label><input type="checkbox"><span>Mostly eat nutrient-dense, less processed foods.</span></label></li><li><label><input type="checkbox"><span>Get enough energy, protein and fluids.</span></label></li><li><label><input type="checkbox"><span>Choose foods by individual tolerance.</span></label></li><li><label><input type="checkbox"><span>Eat cooked instead of raw food when needed.</span></label></li><li><label><input type="checkbox"><span>Adjust fibre and fermentable carbohydrates individually.</span></label></li><li><label><input type="checkbox"><span>Try a twelve-hour overnight eating break.</span></label></li><li><label><input type="checkbox"><span>Cut down on unnecessary evening snacking.</span></label></li><li><label><input type="checkbox"><span>Keep alcohol low or skip it.</span></label></li><li><label><input type="checkbox"><span>Move regularly and dose strength training sensibly.</span></label></li><li><label><input type="checkbox"><span>Prioritise sleep, stress regulation and recovery.</span></label></li><li><label><input type="checkbox"><span>Have persistent symptoms investigated properly.</span></label></li></ul>
-<div class="score"><div class="bar"><i id="cbar"></i></div><b id="ccnt" data-of="of"></b></div>
-<button class="lnk" id="creset" type="button">Reset</button>
+<h2>At a glance.</h2>
+<ul class="tick ov"><li class="">Gut health has many causes. Blanket tips don&#x27;t fit every gut.</li><li class="">Restriction is a tool for a while, not a permanent state.</li><li class="">Healthy doesn&#x27;t automatically mean well tolerated.</li><li class="">With a sensitive gut, cooked food is often easier to digest than raw.</li><li class="dx">Type, amount and timing matter more than single foods.</li><li class="">A twelve-hour overnight eating break is manageable for many people.</li><li class="">Sleep, stress and recovery matter as much as food.</li><li class="dx">Supplements and details are worked out individually with you.</li></ul>
+<div class="note">You don&#x27;t have to implement any of this alone. What makes sense for you and in what order, we decide together. With persistent symptoms it is also worth having the causes investigated.</div>
 </div></section>
 
 <section class="sec"><div class="wrap">
@@ -294,11 +258,16 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;border-top:1px sol
 <script>
 (function(){
 document.querySelectorAll('.lang a').forEach(function(a){a.addEventListener('click',function(){try{document.cookie='lang='+a.getAttribute('data-lang')+'; path=/; max-age=31536000; SameSite=Lax'}catch(e){}})});
-// Darmniveau
-var s=document.getElementById('lvl');
-if(s){var D=JSON.parse(document.getElementById('lvl-data').textContent),L=D.levels,n=document.getElementById('lvl-n'),o=document.getElementById('lvl-o'),p=document.getElementById('lvl-p'),d=document.getElementById('lvl-d'),sp=document.querySelectorAll('.lv-ph span');
-function up(){var v=+s.value;n.textContent=v;s.setAttribute('aria-valuetext',v+'/10');for(var i=0;i<L.length;i++){if(v>=L[i][0]&&v<=L[i][1]){var k=L[i][2];p.textContent=D.word+' '+(k+1)+' \u00b7 '+D.phases[k];o.textContent=L[i][3];d.textContent=L[i][4];sp.forEach(function(x,j){x.classList.toggle('on',j===k)});break}}}
-s.addEventListener('input',up);up()}
+// Faktoren
+var tl=document.querySelectorAll('.mf-t'),pn=document.getElementById('mfp');
+if(tl.length&&pn){var M=JSON.parse(document.getElementById('mf-data').textContent),cur=-1;
+tl.forEach(function(b,i){b.addEventListener('click',function(){
+tl.forEach(function(x){x.setAttribute('aria-expanded','false');x.querySelector('i').textContent='+'});
+if(cur===i){cur=-1;pn.hidden=true;return}
+cur=i;b.setAttribute('aria-expanded','true');b.querySelector('i').textContent='\u2013';
+document.getElementById('mfp-t').textContent=M[i][0];document.getElementById('mfp-p').textContent=M[i][1];pn.hidden=false;
+try{pn.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(e){}
+})})}
 // Prompts kopieren
 document.querySelectorAll('.cp').forEach(function(b){b.addEventListener('click',function(){
 var t=b.closest('.pr').querySelector('code').textContent,lab=b.getAttribute('data-l'),done=b.getAttribute('data-d');
@@ -306,13 +275,6 @@ function ok(){b.textContent=done;b.classList.add('ok');setTimeout(function(){b.t
 if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,fb)}else{fb()}
 function fb(){var x=document.createElement('textarea');x.value=t;x.style.position='fixed';x.style.opacity='0';document.body.appendChild(x);x.select();try{document.execCommand('copy');ok()}catch(e){}document.body.removeChild(x)}
 })});
-// Checkliste
-var cl=document.querySelectorAll('.cl input'),key='bg-checks',bar=document.getElementById('cbar'),cnt=document.getElementById('ccnt'),tot=cl.length;
-function paint(){var c=0;cl.forEach(function(i){if(i.checked)c++});bar.style.width=(c/tot*100)+'%';cnt.textContent=c+' '+cnt.getAttribute('data-of')+' '+tot}
-try{var sv=JSON.parse(localStorage.getItem(key)||'[]');cl.forEach(function(i,k){if(sv.indexOf(k)>-1)i.checked=true})}catch(e){}
-cl.forEach(function(i){i.addEventListener('change',function(){try{var a=[];cl.forEach(function(j,k){if(j.checked)a.push(k)});localStorage.setItem(key,JSON.stringify(a))}catch(e){}paint()})});
-var rs=document.getElementById('creset');if(rs)rs.addEventListener('click',function(){cl.forEach(function(i){i.checked=false});try{localStorage.removeItem(key)}catch(e){}paint()});
-paint();
 })();
 </script>
 </body>
